@@ -11,13 +11,13 @@ Este livro é sobre o paradigma funcional. E para aprender, usaremos a linguagem
 
  * Nós não temos que aprender absolutamente tudo antes, para começar a programar.
 
-    Em uma ``linguagem funcional pura``, você não pode declarar uma variável ou ler um nó do ``DOM`` sem usar ``monads``. Here we can cheat a little as we learn to purify our codebase. E também é mais fácil de começar com JavaScript, pois ele possui uma mistura de paradigmas, e você pode usar suas práticas comuns enquanto não possui todos conhecimentos necessários.
+    Em uma ``linguagem funcional pura``, você não pode declarar uma variável ou ler um nó do ``DOM`` sem usar ``monads``. Aqui aprendemos a purificar nosso código com algumas trapaças. E também é mais fácil de começar com JavaScript, pois ele possui uma mistura de paradigmas, e você pode usar suas práticas comuns enquanto não possui todos conhecimentos necessários.
 
  * A linguagem é totalmente capaz de escrever código funcional de alto nível.
 
-    Nós temos tudo que precisamos para simular linguagens como Sclala ou Haskell com o auxílio de uma ou duas bibliotecas. Atualmente OOP (Object-oriented programing/Programação Orientada a Objetos) é dominante no mercado, e claramente em JavaScript isso é um pouco desajeitado. It's akin to camping off of a highway or tap dancing in galoshes. Nós temos que usar ``bind`` em todos lugares onde queremos usar o escopo do ``this``, nós não temos classes[ainda], temos que tratar o comportamento do ``new`` quando o mesmo é esquecido de ser invocado, membros privados são apenas disponíveis por meio de ``closures``. Para muitos de nós, ``FP`` parece ser mais natural.
+    Nós temos tudo que precisamos para simular linguagens como Sclala ou Haskell com o auxílio de uma ou duas bibliotecas. Atualmente OOP (Object-oriented programing/Programação Orientada a Objetos) é dominante no mercado, e claramente em JavaScript isso é um pouco desajeitado. Seria como "acampar no meio de uma estrada" ou "fazer sapateado usando botas de boracha". Nós temos que usar ``bind`` em todos lugares onde queremos usar o escopo do ``this``, nós não temos classes[ainda], temos que tratar o comportamento do ``new`` quando o mesmo é esquecido de ser invocado, membros privados são apenas disponíveis por meio de ``closures``. E por isso, para muitos de nós, ``FP`` parece ser mais natural.
 
-Dito isto, linguagens funcionais fortemente tipadas são sem dúvida a melhor forma de aprender o paradigma proposto neste livro. JavaScript será o meio de aprendermos este paradigma, onde você mesmo é quem irá aplicá-lo. Felizmente, todas as interfaces são matemáticas e portanto universais. Você se sentirá familiarizado com linguagens como swiftz, scalaz, haskell, purescript e outros ambientes matematicamente inclinados.
+Dito isto, programar em linguagem funcional será sem dúvida a melhor forma de aprender os conceitos propostos neste livro. JavaScript será o meio de aprendermos este paradigma, onde você mesmo é quem irá aplicá-lo. Felizmente, todas as interfaces são matemáticas e portanto universais. Você se sentirá familiarizado com linguagens como Swiftz, Scala, Haskell, Purescript e outros ambientes matematicamente inclinados.
 
 # Outros Idiomas
 
@@ -86,7 +86,8 @@ Dito isto, linguagens funcionais fortemente tipadas são sem dúvida a melhor fo
 
 # Planos para o futuro
 
-* Parte 1 é um guia para as noções básicas. Estou alterando conforme encontro erros, pois este é apenas um esboço inicial. Sinta-se a vontade para ajudar!
-* Parte 2 abordar tipos de classes (type class) como **functors**, **monads** e **traversable**. I hope to squeeze in transformers and a pure application.
+* Parte 1: É um guia para as noções básicas. Estou atualizando conforme encontro erros, pois este é apenas um esboço inicial. Sinta-se a vontade para ajudar!
+* Parte 2: Abordar tipos de classes (type class) como **functors**, **monads** e **traversable**
+. E espero encontrar um tempo para abordar **transformers** e criar uma aplicação de fato pura.
 
-* Parte 3 will start to dance the fine line between practical programming and academic absurdity. We'll look at comonads, f-algebras, free monads, yoneda, and other categorical constructs.
+* Parte 3: Unir a programação prática com as maluquices acadêmicas. Veremos **comonads**, **f-algebras**, **free monads**, **yoneda**, e outras construções categóricas
