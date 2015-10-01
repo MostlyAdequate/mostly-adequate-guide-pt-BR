@@ -34,7 +34,7 @@ Dito isto, programar em linguagem funcional será sem dúvida a melhor forma de 
 * [Capítulo 1: O que estamos fazendo ?](ch1.md)
   * [Introdução](ch1.md#introductions)
   * [Um encontro casual](ch1.md#a-brief-encounter)
-* [Chapter 2: First Class Functions](ch2.md)
+* [Chapter 2: Funcões de Primeira Classe - First Class Functions](ch2.md)
   * [A quick review](ch2.md#a-quick-review)
   * [Why favor first class?](ch2.md#why-favor-first-class)
 * [Chapter 3: Pure Happiness with Pure Functions](ch3.md)

@@ -7,14 +7,14 @@ Olá eu sou o Professor Franklin Risby, prazer em conhece-lo! Iremos passar um t
 Não suponho que você tenha algum conhecimento anterior com programação funcional, mas suponho que tenha conhecimento de passar por situações desfavoráveis que aparecem quando trabalhamos com estados mutáveis, efeitos colaterais irrestritos e unprincipled design. Agora que estamos apresentados, vamos começar.
 
 
-O propósito deste capítulo é lhe mostrar aquilo que procuramos quando escrevemos programas funcionais. Devemos ter a idéia sobre o que faz um programa ser **funcional**, ou iremos apenas escrever código a toa sem rumo algum, inclusive evitando a todo custo objetos - Um esforço inútil. We need a bullseye to hurl our code toward, some celestial compass for when the waters get rough.
+O propósito deste capítulo é lhe mostrar aquilo que procuramos quando escrevemos programas funcionais. Devemos ter a idéia sobre o que faz um programa ser **funcional**, ou iremos apenas escrever código a toa sem rumo algum, inclusive evitando a todo custo objetos - Um esforço inútil.
+Precisamos de uma bússula, um norte para quando sentirmos que estamos perdidos.
 
-
-Existem alguns principios de programação, vários credos que nos guia através dos vales sombrios de qualquer aplicação: DRY (don't repeat yourself), loose coupling high cohesion, YAGNI (ya ain't gonna need it), principle of least surprise, única responsabilidade, e assim por diante.
+Existem alguns principios de programação, vários credos que nos guia através dos vales sombrios de qualquer aplicação: DRY (don't repeat yourself / não se repita), loose coupling high cohesion (acoplamento e coesão), YAGNI (ya ain't gonna need it / você não vai precisar disso), principle of least surprise (princípio da menor surpresa), single responsibility (única responsabilidade), e assim por diante.
 
 Não irei abusar usando cada princípio que tenho visto em todos esses anos... o caso
 é que eles se aplicam no ambiente funcional, mesmo sendo de uma forma superficial para aquilo que queremos.
-What I'd like you to get a feel for now, before we get any further, is our intention when we poke and prod at the keyboard; our functional Xanadu.
+O que quero agora, antes de seguimos, é deixar claro que nosso objetivo aqui é a abordagem funcional.
 
 <!--BREAK-->
 
@@ -111,18 +111,18 @@ add(multiply(flock_b, flock_a), multiply(flock_a, flock_b));
 // Aplicamos "distributive property"
 multiply(flock_b, add(flock_a, flock_a));
 ```
-Brilhante, Não temos que escrever um pingo de código personalizado, apenas chamar nossas funções.
+Brilhante, não temos que escrever um pingo de código personalizado, apenas chamar nossas funções.
 Definimos `add` e `multiply` nós mesmos, mas não há necessidade de escreve-las - Certamente existe uma implementação das mesmas fornecida por alguma biblioteca.
 
-Você deve estar pensando "how very strawman of you to put such a mathy example up front". Ou "Programas reais não são tão simples e não podem ser fundamentados desta forma". Escolhi esse exemplo porque muitos de nós conhecemos bem adição e multiplicação, então fica fácil de ver como a matemática pode ser útil para nós aqui.
+Você deve estar pensando "Que esperto você, dando um exemplo puramente matemático!". Ou "Programas reais não são tão simples e não podem ser resolvidos desta forma". Escolhi esse exemplo porque muitos de nós conhecemos bem adição e multiplicação, então é fácil perceber como a matemática pode ser útil para nós aqui.
 
-Então não se desespere ao longo deste livro, we'll sprinkle in some category theory, set theory, and lambda calculus para programar exemplos reais que possuirão a mesma simplicidade e resultados do nosso programa ``segull``. Você também não precisa ser um matemático, isto será apenas como usar um *framework* ou uma *api*.
+Então não se desespere, iremos por partes em teoria da categoria, teoria dos conjuntos e cálculo  lambda para programar exemplos reais que possuirão a mesma simplicidade e resultados do nosso programa ``segull``. Você também não precisa ser um matemático, isto será apenas como usar um *framework* ou uma *api*.
 
 
 Pode ser uma supresa para você, ouvir que podemos escrever no nosso dia-a-dia, programas completos usando a abordagem funcional proposta acima. Programas com uma excelente performance, concisos, elegantes e ainda sim fáceis de entender. Programas que não reinventam a roda todo momento. Se você é um criminoso, a lei não é uma coisa boa, mas neste livro, vamos querer reconhecer e obedecer as leis da matemática.
 
-We'll want to use the theory where every piece tends to fit together so politely. We'll want to represent our specific problem in terms of generic, composable bits and then exploit their properties for our own selfish benefit. It will take a bit more discipline than the "anything goes" approach of imperative[^We'll go over the precise definition of imperative later in the book, but for now it's anything other than functional programming] programming, but the payoff of working within a principled, mathematical framework will astound you.
+Queremos usar a teoria como um quebra-cabeça onde cada peça se encaixa perfeitamente. Queremos representar problemas específicos de modo genérico, componentizado e então explorar suas propriedades a nosso favor. Isso requer mais disciplina do que o "Bora programar!" da abordagem da programação imperativa[ Mais tarde falaremos a definição precisa do que é programação imperativa, mas de antemão é absolutamente qualquer coisa diferente de programação funcional], mas o benefício de trabalhar com princípios matemáticos na abordagem funcional vai te deixar de queixo caído.
 
 Nós vimos apenas um pequeno brilho de nossa ``estrela guia funcional``, mas existem mais alguns conceitos sólidos para vermos, antes de realmente começarmos nossa jornada.
 
-[Capítulo 2: First Class Functions](ch2.md)
+[Capítulo 2: Funcões de Primeira Classe - First Class Functions ](ch2.md)
