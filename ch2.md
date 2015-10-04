@@ -1,9 +1,10 @@
-# Chapter 2: First Class Functions
+# Chapter 2: Funcões de Primeira Classe - First Class Functions
 
-## A quick review
-When we say functions are "first class", we mean they are just like everyone else... so normal class[^coach?]. We can treat functions like any other data type and there is nothing particularly special about them - store them in arrays, pass them around, assign them to variables, what have you.
+## Revisão rápida
 
-That is JavaScript 101, but worth a mention as a quick code search on github will show the collective evasion, or perhaps widespread ignorance of the concept. Shall we go for a feigned example? We shall.
+Quando dizemos que funções são de primeira classe (first class), significa que são como qualquer outro...classes normais [^como assim professor?]. Podem ser tratados como qualquer outro tipo de dado, não há nenhum comportamento em particular - pode ser um valor dentro de um array, pode ser um argumento de função, pode ser atribuido a uma variável...aquilo que precisar.
+
+Isso é o básico do Javascript, mas se você procurar alguns códigos no github, verá a ignorância sobre esse conceito. Preciso lhe mostrar um exemplo? Claro, vamos lá!
 
 ```js
 var hi = function(name){
@@ -15,8 +16,8 @@ var greeting = function(name) {
 };
 ```
 
-Here, the function wrapper around `hi` in `greeting` is completely redundant. Why? Because functions are *callable* in JavaScript. When `hi` has the `()` at the end it will run and return a value. When it does not, it simply returns the function stored in the variable. Just to be sure, have a look-see:
-
+Aqui a função `hi` atribuida na função `greeting` é completamente redundante. E porquê ? Em Javascript funções são *callable*, o que significa que podem ser invocadas ou não. Quando a `hi` está com `()` no final, ela vai ser chamada e retornar um valor. Caso contrário, simplesmente retorna a função que foi atribuída a ela.
+Só para termos certeza, vamos dar uma olhadinha de novo.
 
 ```js
 hi;
@@ -28,7 +29,7 @@ hi("jonas");
 // "Hi jonas"
 ```
 
-Since `greeting` is merely turning around and calling `hi` with the very same argument, we could simply write:
+Já que `greeting` somente chama a função `hi` com o mesmo argumento, podemos escrever simplesmente assim:
 
 ```js
 var greeting = hi;
@@ -38,45 +39,45 @@ greeting("times");
 // "Hi times"
 ```
 
-In other words, `hi` is already a function that expects one argument, why place another function around it that simply calls `hi` with the same bloody argument? It doesn't make any damn sense. It's like donning your heaviest parka in the dead of July just to blast the air and demand an ice lolly.
+Em outras palavras, `hi` já é uma função que espera apenas um argumento, então porque inserir outra função para simplesmente chamar `hi` dentro dela com o mesmo maldito argumento? Isso não faz o menor sentido. É como você vestir seu casado mais pesado apenas para ir comprar um sorvete.
 
-It is obnoxiously verbose and, as it happens, bad practice to surround a function with another function merely to delay evaluation. (We'll see why in a moment, but it has to do with maintenance.)
+Isso é verboso e uma má prática, colocar uma função dentro da outra somente para retardar sua avaliação.( Logo veremos esse caso, mas tem a ver com manuteção de código );
 
-A solid understanding of this is critical before moving on, so let's see a few more fun examples excavated from npm modules.
+Entender bem essa parte antes de seguirmos é importantissímo, por isso vamos ver mais alguns exemplos divertidos que encontrei no npm modules.
 
 ```js
-// ignorant
+// ignorante
 var getServerStuff = function(callback){
   return ajaxCall(function(json){
     return callback(json);
   });
 };
 
-// enlightened
+// claro
 var getServerStuff = ajaxCall;
 ```
 
-The world is littered with ajax code exactly like this. Here is the reason both are equivalent:
+O mundo está cheio de código ajax como este. Está é a razão do porque os dois são equivalentes.
 
 ```js
-// this line
+// essa linha
 return ajaxCall(function(json){
   return callback(json);
 });
 
-// is the same as this line
+// faz a mesma coisa que essa
 return ajaxCall(callback);
 
-// so refactor getServerStuff
+// então refatorando a getServerStuff ...
 var getServerStuff = function(callback){
   return ajaxCall(callback);
 };
 
-// ...which is equivalent to this
-var getServerStuff = ajaxCall; // <-- look mum, no ()'s
+// ... que é a mesma coisa que fazer isso
+var getServerStuff = ajaxCall; // <-- Olha, sem os ()'s
 ```
 
-And that, folks, is how it is done. Once more then we'll see why I'm so insistent.
+E isso, amigos, é como geralmente é feito. Uma vez mais veremos porque eu sou tão insistente.
 
 ```js
 var BlogController = (function() {
@@ -105,8 +106,7 @@ var BlogController = (function() {
   };
 })();
 ```
-
-This ridiculous controller is 99% fluff. We could either rewrite it as:
+Esse controller rodículo é 99% "fru-fru". Nós podemos reescrever isso assim:
 
 ```js
 var BlogController = {
@@ -118,13 +118,13 @@ var BlogController = {
 };
 ```
 
-...or scrap it altogether as it does nothing other than bundle our Views and Db together.
+... ou simplesmente não fazer nada, pois não fazem nada além de agrupar Views e Db.
 
-## Why favor first class?
+## Porque a preferência por primeira classe?
 
-Okay, let's get down to the reasons to favor first class functions. As we saw in the `getServerStuff` and `BlogController` examples, it's easy to add layers of indirection that have no actual value and only increase the amount of code to maintain and search through.
+OK, vamos dar uma olhada o porque da preferência por funções de primeira classe. Como vimos em `getServerStuff` e `BlogController`, é muito fácil colocarmos camadas enganosas que não tem valor algum a não ser deixar o código mais complexo e difícil de manter.
 
-In addition, if a function we are needlessly wrapping does change, we must also change our wrapper function.
+Além disso, se a função externa precisa ser alterada, temos que alterar a função interna.
 
 ```js
 httpGet('/post/2', function(json){
@@ -132,36 +132,35 @@ httpGet('/post/2', function(json){
 });
 ```
 
-If `httpGet` were to change to send a possible `err`, we would need to go back and change the "glue".
+Se `httpGet` foi alterada para enviar um possível `err` (erro), então teremos que alterar a função interna.
 
 ```js
-// go back to every httpGet call in the application and explicitly pass err
-// along.
+// vamos ter que entrar em cada httpGet na aplicação e explicitamente passar a variável 'err'
 httpGet('/post/2', function(json, err){
   return renderPost(json, err);
 });
 ```
 
-Had we written it as a first class function, much less would need to change:
+Se tivessemos escrito como uma função de primeira classe, muito menos código precisaria ser alterado.
 
 ```js
-// renderPost is called from within httpGet with however many arguments it wants
-httpGet('/post/2', renderPost);  
+// renderPost é chamado através do httpGet com quantos argumentos forem necessários
+httpGet('/post/2', renderPost);
 ```
 
-Besides the removal of unnecessary functions, we must name and reference arguments. Names are a bit of an issue, you see. We have potential misnomers - especially as the codebase ages and requirements change.
+Além de remover funções desnecessárias, temos a questão de nomes de argumentos. Nomes são um problema. Muitos nomes não fazem ou perdem o sentido, especialmente em códigos antigos/legados ou também conforme a aplicação cresce.
 
-Having multiple names for the same concept is a common source of confusion in projects. There is also the issue of generic code. For instance, these two functions do exactly the same thing, but one feels infinitely more general and reusable:
+Um dos problemas que temos em muitos projetos, são muitos nomes diferentes para os mesmos conceitos. Existe a questão também de deixar o código mais genérico possível. Por exemplo, essas duas funções fazem a mesma coisa, mas uma delas é infinitamente mais genérica e com muito mais chance de ser reutilizável.
 
 ```js
-// specific to our current blog
+// código específico para nosso blog
 var validArticles = function(articles) {
   return articles.filter(function(article){
     return article !== null && article !== undefined;
   });
 };
 
-// vastly more relevant for future projects
+// muito mais relevante para o blog, e para futuros projetos
 var compact = function(xs) {
   return xs.filter(function(x) {
     return x !== null && x !== undefined;
@@ -169,25 +168,25 @@ var compact = function(xs) {
 };
 ```
 
-By naming things, we've seemingly tied ourselves to specific data (in this case `articles`). This happens quite a bit and is a source of much reinvention.
+Quando nomeamos coisas, a ligamos a um tipo de dado específico ( neste caso `articles` ). Isso acontece frequentemente, e isso é uma fonte de repetições.
 
-I must mention that, just like with Object-Oriented code, you must be aware of `this` coming to bite you in the jugular. If an underlying function uses `this` and we call it first class, we are subject to this leaky abstraction's wrath.
+Preciso te alertar que, pela natureza do Javascript ser orientado a objetos, você precisa prestar atenção no `this`, ele pode lhe morder no pescoço. Se uma função usa `this` e nós a invocamos como primeira classe, estamos sujeito e graves desilusões.
 
 ```js
 var fs = require('fs');
 
-// scary
+// assustador
 fs.readFile('freaky_friday.txt', Db.save);
 
-// less so
+// agora um pouco menos
 fs.readFile('freaky_friday.txt', Db.save.bind(Db));
 
 ```
 
-Having been bound to itself, the `Db` is free to access its prototypical garbage code. I avoid using `this` like a dirty nappy. There's really no need when writing functional code. However, when interfacing with other libraries, you'll have to acquiesce to the mad world around us.
+Ao usar `bind`, damos a possíbilidade de `Db` acessar seu próprio protótipo. Eu evito usar `this` como se fosse uma fralda suja. Isso não é necessário quando escrevermos código funcional. Entretanto, quando você usa outras bibliotecas, precisa saber lidar com o mundo maluco em torno de você.
 
-Some will argue `this` is necessary for speed. If you are the micro-optimization sort, please close this book. If you cannot get your money back, perhaps you can exchange it for something more fiddly.
+Alguns vão dizer que `this` é necessário em termos de desempenho. Mas se você for do tipo micro-otimizadores, por favor, feche esse livro. Se você não conseguir seu dinheiro de volta, de repente possa trocá-lo por algo mais complicado.
 
-And with that, we're ready to move on.
+Dito isto, estamos pronto para seguir em frente.
 
-[Chapter 3: Pure Happiness with Pure Functions](ch3.md)
+[Chapter 3: Alegria Pura com Funções Puras](ch3.md)
