@@ -1,4 +1,4 @@
-# Chapter 2: Funcões de Primeira Classe - First Class Functions
+# Capítulo 2: Funcões de Primeira Classe
 
 ## Revisão rápida
 
@@ -189,4 +189,4 @@ Alguns vão dizer que `this` é necessário em termos de desempenho. Mas se voc�
 
 Dito isto, estamos pronto para seguir em frente.
 
-[Chapter 3: Alegria Pura com Funções Puras](ch3.md)
+[Capítulo 3: Alegria Pura com Funções Puras](ch3-pt-BR.md)

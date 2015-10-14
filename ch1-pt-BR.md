@@ -125,4 +125,4 @@ Queremos usar a teoria como um quebra-cabeça onde cada peça se encaixa perfeit
 
 Nós vimos apenas um pequeno brilho de nossa ``estrela guia funcional``, mas existem mais alguns conceitos sólidos para vermos, antes de realmente começarmos nossa jornada.
 
-[Capítulo 2: Funcões de Primeira Classe - First Class Functions ](ch2.md)
+[Capítulo 2: Funcões de Primeira Classe](ch2-pt-BR.md)
