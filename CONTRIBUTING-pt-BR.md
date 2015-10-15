@@ -1,5 +1,5 @@
 
-# Contributing to Mostly Adequate Guide to Funcitonal Programming
+# Contribuindo com o Guia Mais Adequado para Programação Funcional
 
 ## Concessão de licença
 

@@ -56,7 +56,7 @@ var checkAge = function(age) {
 
 O retorno da função "impura" `checkAge` depende da variável mutável `minimum`. Em outras palavras, ela é dependente do ambiente do sistema, o que é decepcionante, porque isso aumenta a carga cognitiva por ser afetada por um ambiente externo.
 
-O exemplo acima pode não parecer um problema, mas essa dependência de estados é um dos maiores fatores de complexidade em sistemas[^http://www.curtclifton.net/storage/papers/MoseleyMarks06a.pdf]. A função `checkAge` pode retornar diferentes resultados dependendo dos fatores externos, o que não só a desqualifica de ser uma função pura, mas se torna complexo de entender o que está acontecendo no código, cada vez que temos que analisa-lo.
+O exemplo acima pode não parecer um problema, mas essa dependência de estados é um dos maiores fatores de complexidade em sistemas[^http://www.curtclifton.net/storage/papers/MoseleyMarks06a.pdf]. A função `checkAge` pode retornar diferentes resultados dependendo dos fatores externos, o que não só a desqualifica de ser uma função pura, mas se torna complexo de entender o que está acontecendo no código cada vez que temos que analisá-lo.
 
 Mas em uma forma pura ela se torna completamente auto-suficiente. Podemos tornar a variável `minimum` imutável, que preservará sua pureza, onde seu estado nunca muda. Para fazer isso temos que criar um objeto de congelamento.
 
@@ -71,7 +71,7 @@ var immutableState = Object.freeze({
 Vamor dar uma olhada nesses "efeitos colaterais" para melhorar nossa intuição.
 Mas o que são esses nefastos *efeitos colaterais* mencionados na definição de *funções puras*? Bom, iremos nos referir a *efeitos*, como qualquer coisa que ocorra além do cálculo de um resultado.
 
-Não há nada particularmente ruim em "efeitos", e continuaremos a usá-los ao longo dos capítulos. Essa parte *colateral* que tem a conotação negativa. Aguás paradas não são uma incubadora de larvas, o problema é ficar *estagnada/parada*, isso sim produz a proliferação de larvas, e eu lhe garanto que efeitos *colaterais* são semelhantes a isso em seus programas.
+Não há nada particularmente ruim em "efeitos", e continuaremos a usá-los ao longo dos capítulos. Essa parte *colateral* que tem a conotação negativa. A água por sí só não é uma incubadora de larvas, o problema é ficar *estagnada/parada*, isso sim produz a proliferação de larvas, e eu lhe garanto que efeitos *colaterais* são semelhantes a isso em seus programas.
 
 >Um *efeito colateral* é a alteração de uma estado no sistema ou uma *interação observável* com o mundo externo, que ocorre durante o cálculo de uma resultado.
 
@@ -88,7 +88,7 @@ Efeitos colaterais podem incluir: (Mas não estão limitados apenas a isso.)
 
 E a lista vai crescendo. Qualquer interação com o mundo exterior em uma função é um efeito colateral, o que lhe leva pensar que isso pode ser muito prático. Mas a filosofia da programação funcional postula que, efeitos colaterais são a principal causa de comportamentos incorretos.
 
-Não estamos proibindo seu uso, em vez disso, queremos apenas conte-los e roda-los de uma forma controlada e segura. Iremos aprender como fazer isso quando trabalharmos com *functors* e *nomads* nos próximos capítulos, mas agora, vamos tentar deixar essas funções traiçoeiras bem separadas de nossas funções puras.
+Não estamos proibindo seu uso, em vez disso, queremos apenas contê-los e roda-los de uma forma controlada e segura. Iremos aprender como fazer isso quando trabalharmos com *functors* e *nomads* nos próximos capítulos, mas agora, vamos tentar deixar essas funções traiçoeiras bem separadas de nossas funções puras.
 
 Efeitos colaterais desqualifica uma função de ser *pura* e isso faz sentido: funções puras por definição, deve sempre retornar a mesma saída dada um mesma entrada, o que não é possível garantir quando lidamos com fatores externos dentro de nossa função local.
 
@@ -208,27 +208,27 @@ var signUp = function(Db, Email, attrs) {
 
 O exemplo aqui mostra que a função pura deve ser transparente sobre suas dependências, e portanto nos diga exatamente o que ela faz. Apenas olhando sua assinatura, pelo menos, sabemos que ela vai usar `Db`, `Email` e `attrs`.
 
-Iremos aprender como criar funções puras não apenas adiando sua avaliação, mas aqui deve estar claro funções puras são muito mais informativas que as traiçoeiras funções inpuras.
+Iremos aprender como criar funções puras não apenas adiando sua avaliação, mas aqui deve estar claro, funções puras são muito mais informativas que as traiçoeiras funções inpuras.
 
-Outra coisa que temos que salientar é que somos forçados a "injetar" dependências, ou passa-los como argumentos, o que torna nosso app muito mais flexível porque parametrizamos nosso banco de dados, e-mail ou qualquer outra informação necessária[^Não se preocupe, iremos ver uma forma de fazer isso de uma forma menos chata do que parece]. Se precisarmos informar um outro Db, basta chamar nossa função como este outro Db. Se precisarmos criar um novo aplicativo e quisermos usar essa nossa função confiável, basta passarmos os novos parâmetros para `Db` e `Email`.
+Outra coisa que temos que salientar é que somos forçados a "injetar" dependências, ou passá-los como argumentos, o que torna nosso app muito mais flexível porque parametrizamos nosso banco de dados, e-mail ou qualquer outra informação necessária[^Não se preocupe, veremos como fazer isso de uma forma menos chata do que parece]. Se precisarmos informar um outro Db, basta chamar nossa função como este outro Db. Se precisarmos criar um novo aplicativo e quisermos usar essa nossa função confiável, basta passarmos os novos parâmetros para `Db` e `Email`.
 
 No cenário Javascript, portabilidade pode significar serializar e enviar funções através de um socket. Isso pode significar executar nosso app em web workers. Portabilidade é uma ferramenta poderosa.
 
 Ao contrário dos "típicos" métodos e procedimentos da programação imperativa, que estão profundamente enraizados em seus ambientes devido aos estados, dependências e efeitos disponíveis, funções puras rodam em qualquer lugar, onde seu coração desejar.
 
-Quando foi a última vez que você copiou um método para um novo app? Uma de minhas citações favoritas vem do criador do Erlang, Joe Armstrong: "O problema com linguagens orientadas a objetos, é que carregam consigo toda esse ambiente implícito. Você quer uma banana, mas em vez disso você recebe um gorila segurando uma banana... e toda selva junto".
+Quando foi a última vez que você copiou um método para um novo app? Uma de minhas citações favoritas vem do criador do Erlang, Joe Armstrong: "O problema com linguagens orientadas a objetos, é que carregam consigo todo esse ambiente implícito. Você quer uma banana, mas em vez disso você recebe um gorila segurando uma banana... e toda selva junto".
 
 ### Testável
 
 A seguir, percebemos que funções puras tornam os testes muito mais fáceis. Não temos que criar uma plataforma "real" de pagamento e testar todos estados do mundo externo. Temos apenas que informar as entradas e testar as saídas.
 
-In fact, we find the functional community pioneering new test tools that can blast our functions with generated input and assert that properties hold on the output. It's beyond the scope of this book, but I strongly encourage you to search for and try *Quickcheck* - a testing tool that is tailored for a purely functional environment.
+De fato, encontramos a comunidade funcional criando novas ferramentas de testes, que podem gerar várias entradas em nossas funções, testando suas saídas. Isto está além do escopo deste livro, mas eu lhe encorajo a procurar por *Quickcheck* - Uma ferramenta de testes para ambientes puramente funcionais.
 
-### Reasonable
+### Razoável
 
-Many believe the biggest win when working with pure functions is *referential transparency*. A spot of code is referentially transparent when it can be substituted for its evaluated value without changing the behavior of the program.
+Muitos acreditam que o maior beneficio em trabalhar com funções puras é a *referência transparente*. Um pedaço de código é referenciamente transparente, quando o mesmo pode ser substituído por seu valor avaliado sem alterar o comportamento do programa.
 
-Since pure functions always return the same output given the same input, we can rely on them to always return the same results and thus preserve referential transparency. Let's see an example.
+Já que funções puras sempre retornam a mesma saída dada a mesma entrada, temos a certeza que sempre retornam o mesmo resultado e assim preservam a transparência referencial. Vamos ver um exemplo:
 
 ```js
 
@@ -255,9 +255,9 @@ punch(jobe, michael);
 //=> Immutable.Map({name:"Michael", hp:19, team: "green"})
 ```
 
-`decrementHP`, `isSameTeam` and `punch` are all pure and therefore referentially transparent. We can use a technique called *equational reasoning* wherein one substitutes "equals for equals" to reason about code. It's a bit like manually evaluating the code without taking into account the quirks of programmatic evaluation. Using referential transparency, let's play with this code a bit.
+A funções `decrementHP`, `isSameTeam` e `punch` são puras, portanto são referenciamente transparentes. Podemos usar uma técnica chamada *raciocínio equacional* onde você pode substituir o raciocínio sobre o código de "igual para igual". É como avaliar manualmente o código, independente das peculiaridades da avaliação programática. Vamos brincar um pouco com este código usando transparência referencial.
 
-First we'll inline the function `isSameTeam`.
+Primeiro, eliminamos `isSameTeam`.
 
 ```js
 var punch = function(player, target) {
@@ -269,7 +269,7 @@ var punch = function(player, target) {
 };
 ```
 
-Since our data is immutable, we can simply replace the teams with their actual value
+Já que nossos dados são imutáveis, podemos simplesmente substituir as equipes com seus valores reais.
 
 ```js
 var punch = function(player, target) {
@@ -281,7 +281,7 @@ var punch = function(player, target) {
 };
 ```
 
-We see that it is false in this case so we can remove the entire if branch
+Aqui vemos que o valor nesse caso é falso, então podemos remover essa parte.
 
 ```js
 var punch = function(player, target) {
@@ -289,8 +289,7 @@ var punch = function(player, target) {
 };
 
 ```
-
-And if we inline `decrementHP`, we see that, in this case, punch becomes a call to decrement the `hp` by 1.
+E se também retirarmos `decrementHP`, vemos que, neste caso, `punch` se torna apenas uma chamada para decrementar o `hp` por 1;
 
 ```js
 var punch = function(player, target) {
@@ -298,19 +297,19 @@ var punch = function(player, target) {
 };
 ```
 
-This ability to reason about code is terrific for refactoring and understanding code in general. In fact, we used this technique to refactor our flock of seagulls program. We used equational reasoning to harness the properties of addition and multiplication. Indeed, we'll be using these techniques throughout the book.
+Essa capacidade de raciocinar sobre o código é ótima para refatorar e entender codigos em geral. De fato, nós usamos essa técnica para refatorar nosso `flock` do programa `seagul`. Nós usamos `raciocínio equacional` para aproveitar as propriedades da adição e multiplicação.
+Na verdade, iremos usar essa técnica ao longo do livro.
 
-### Parallel Code
+### Código paralelo
 
-Finally, and here's the coup de grâce, we can run any pure function in parallel since it does not need access to shared memory and it cannot, by definition, have a race condition due to some side effect.
+Finalmente, aqui está o golpe de misericórdia, podemos rodar qualquer função pura em paralelo, já que a mesma não precisa de acesso a memória compartilhada e não pode, por definição, possuir concorrência devido a algum efeito coleteral.
 
-This is very much possible in a server side js environment with threads as well as in the browser with web workers though current culture seems to avoid it due to complexity when dealing with impure functions.
+Isto é totalmente possível tanto em um ambiente servidor js com threads, bem como no navegador com `web workers`, embora a cultura atual pareça evita-lá devido a complexidade quando se trata de funções impuras.
 
+## Em Resumo
 
-## In Summary
+Nós vimos o que são funções puras, e porque nós, como programadores funcionais, acreditamos que são uma maravilha. Deste ponto em diante, vamos nos esforçar para escrever todas nossas funções de forma `pura`. Vamos precisar de algumas ferramentas para nos ajudar a fazer isso, mas enquanto isso, vamos tentar separar as funções inpuras do resto do do nosso código `puro`.
 
-We've seen what pure functions are and why we, as functional programmers, believe they are the cat's evening wear. From this point on, we'll strive to write all our functions in a pure way. We'll require some extra tools to help us do so, but in the meantime, we'll try to separate the impure functions from the rest of the pure code.
+Escrever programas com funções puras é um pouco trabalhoso sem a ajuda de ferramentas adicionais em nosso `cinto de utilidades`. Temos que fazer alguns malabarismos passando argumentos para tudo quanto é lugar, estamos proibidos de usar estados, para não mencionar os efeitos colaterais. Como se faz para escrever esses programas mazoquistas? Vamos adquirir uma nova ferramenta chamada `curry`.
 
-Writing programs with pure functions is a tad laborious without some extra tools in our belt. We have to juggle data by passing arguments all over the place, we're forbidden to use state, not to mention effects. How does one go about writing these masochistic programs? Let's acquire a new tool called curry.
-
-[Chapter 4: Currying](ch4.md)
+[Chapter 4: Currying](ch4-pt-BR.md)

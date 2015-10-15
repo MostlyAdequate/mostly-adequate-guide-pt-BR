@@ -9,7 +9,7 @@
 * [Capítulo 3: Alegria Pura com Funções Puras](ch3-pt-BR.md)
   * [Ser puro novamente](ch3-pt-BR.md#ser-puro-novamente)
   * [Efeitos colaterais podem incluir](ch3-pt-BR.md#efeitos-colaterais-podem-incluir)
-  * [Matemática da 8ª série](ch3-pt-BR.md#matemática-da-8-série)
+  * [Matemática da 8ª série](ch3-pt-BR.md#matemática-da-8ª-série)
   * [Em busca de pureza](ch3-pt-BR.md#em-busca-de-pureza)
   * [In Summary](ch3.md#in-summary)
 * [Chapter 4: Currying](ch4.md)
