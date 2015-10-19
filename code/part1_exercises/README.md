@@ -1,15 +1,17 @@
-Part 1 Exercises
+Parte 1 Exercícios
 ==================
 
-**Installation**:
+**Instalação**:
 `npm install`
 
-**Running tests**:
-Tests are located in their corresponding folders.  To run:
+**Rodando os testes**:
+Os testes estão na mesma pasta dos seus respectivos exercícios. Para rodar:
 
 ```
 cd exercises/curry
 mocha *spec.js
+// ou
+../../node_modules/mocha/bin/mocha *spec.js
 ```
 
-Some will fail and some will pass. You'll need to edit the exercises until the tests pass.
+Alguns irão falhar outros irão passar. Você precisa editar os exercícios até todos os testes passarem.

@@ -1,11 +1,12 @@
-# Chapter 4: Currying
+# Capítulo 4: Currying
 
-## Can't live if livin' is without you
-My Dad once explained how there are certain things one can live without until one acquires them. A microwave is one such thing. Smart phones, another. The older folks among us will remember a fulfilling life sans internet. For me, currying is among this list.
+## Não vivo se viver é sem você
 
-The concept is simple: You can call a function with fewer arguments than it expects. What is returned is a function that takes the remaining arguments.
+Uma vez meu pai me explicou que há certas coisas que você vive sem, até um dia tê-las. Forno de microondas e Smart Phones por exemplo. Algumas pessoas mais velhas lembram de viver uma vida plena sem internet. Para mim, currying é mais um exemplo.
 
-You can choose to call it all at once or simply feed in each argument piecemeal.
+O conceito é simples: Você pode chamar uma função com menos argumentos do que o esperado. E o que será retornado, é uma função que leva os argumentos restantes.
+
+Você pode chamar todos de uma só vez, ou por partes.
 
 ```js
 var add = function(x) {
@@ -24,9 +25,9 @@ addTen(2);
 // 12
 ```
 
-Here we've made a function `add` that will take one argument and return a function. By calling it, the returned function remembers the first argument from then on via the closure. Calling it all at once is a bit of a pain, however, so we can use a special helper function called `curry` to make defining and calling functions like this easier.
+Criamos a função `add` que receberá um argumento e retornará uma função. Quando nós a chamamos, a função retornada lembra do primeiro argumento através de uma `closure`. Chamar os argumentos todos de uma vez, é um pouco doloroso, no entanto, podemos usar uma função auxiliar chamada `curry` para definir e chamar funções como esta facilmente.
 
-Let's setup a few curried functions for our enjoyment.
+Vamos configurar algumas funções curry:
 
 ```js
 var curry = require('lodash.curry');
@@ -48,7 +49,7 @@ var map = curry(function(f, xs) {
 });
 ```
 
-The pattern I've followed is a simple, but important one. I've strategically positioned the data we're operating on (String, Array) as the last argument. It will become clear as to why upon use.
+O padrão que estou seguindo é simples, porém muito importante. Posicinei estrategicamente o dado que estamos operando (String, Array) como sendo o último argumento. Isso ficará mais claro logo.
 
 ```js
 match(/\s+/g, "hello world");
@@ -85,14 +86,14 @@ censored("Chocolate Rain");
 // 'Ch*c*l*t* R**n'
 ```
 
-What's being demonstrated here is the ability to "pre-load" a function with an argument or two in order to receive a new function that remembers those arguments.
+O que demostramos aqui é a habilidade de "pre-carregar" uma função com um ou dois argumentos, para receber uma nova função que lembra esses argumentos.
 
-I encourage you to `npm install lodash`, copy the code above and have a go at it in the repl. You can also do this in a browser where lodash or ramda is available.
+Eu lhe encorajo a instalar `npm install lodash`, copiar os códigos acima e tentar por você mesmo. Pode ser no browser onde possua lodash ou ramda.
 
-## More than a pun / special sauce
-Currying is useful for many things. We can make new functions just by giving them some arguments as seen in `hasSpaces`, `findSpaces`, and `censored`.
+## Mais do que somente um tempero
+Currying é útil para muitas coisas. Podemos criar novas funções apenas passando alguns argumentos como vistos em `hasSpaces`, `findSpaces`, e `censored`.
 
-We also have the ability to transform any function that works on single elements into a function that works on arrays simply by wrapping it with `map`:
+Temos também a habilidade de tranformar qualquer função que funcione com um único argumento, para que funcione também com arrays, para isso apenas a encapsulamos com nossa função `map`.
 
 ```js
 var getChildren = function(x) {
@@ -102,91 +103,91 @@ var getChildren = function(x) {
 var allTheChildren = map(getChildren);
 ```
 
-Giving a function fewer arguments than it expects is typically called *partial application*. Partially applying a function can remove a lot of boiler plate code. Consider what the above `allTheChildren` function would be with the uncurried `map` from lodash[^note the arguments are in a different order]:
+Funções chamadas com menos argumentos que a mesma espera, é tipicamente chamada de *partial application*(aplicação parcial). Usando essa técnica eliminamos um monte de código desnecessário. Note que a função `allTheChildren` se parece com a função da biblioteca lodash[^note que os argumentos estão em ordem diferente].
 
 ```js
 var allTheChildren = function(elements) {
   return _.map(elements, getChildren);
 };
 ```
+Nós geralmente não definimos funções que trabalham com arrays, isso porque podemos chamar `map(getChildren)` inline. O mesmo se dá com `sort`, `filter` e outras higher order functions(funções de ordem superior)[^Higher order function: Uma função que recebe ou retorna uma função].
 
-We typically don't define functions that work on arrays, because we can just call `map(getChildren)` inline. Same with `sort`, `filter`, and other higher order functions[^Higher order function: A function that takes or returns a function].
+Quando falamos sobre *funções puras*, dizemos que recebem 1 entrada e retornam 1 saída. Currying faz exatamente isso: cada argumento retorna uma nova função que espera os argumentos restantes. Ou seja, 1 entrada e 1 saída. Não importa se a saída é outra função - isso faz dela pura. Podemos passar mais de um argumento, mas é o mesmo que remover os `()` por conveniência.
 
-When we spoke about *pure functions*, we said they take 1 input to 1 output. Currying does exactly this: each single argument returns a new function expecting the remaining arguments. That, old sport, is 1 input to 1 output. No matter if the output is another function - it qualifies as pure. We do allow more than one argument at a time, but this is seen as merely removing the extra `()`'s for convenience.
+## Em resumo
 
+Currying é muito útil, e adoro trabalhar com funções curry no meu dia-a-dia. Essa é uma das ferramentas de nosso cinto de utilidades que faz com que a programação funcional seja menos verbosa e chata. Podemos criar novas funções úteis simplesmente passando alguns argumentos, mas além disso, mantemos a definição matemática da função, mesmo passando vários argumentos.
 
-## In summary
+Vamos aprender mais uma ferramenta essencial chamada `compose`.
 
-Currying is handy and I very much enjoy working with curried functions on a daily basis. It is one tool for the belt that makes functional programming less verbose and tedious. We can make new, useful functions on the fly simply by passing in a few arguments and as a bonus, we've retained the mathematical function definition despite multiple arguments.
+[Capítulo 5: Programando por Composição](ch5-pt-BR.md)
 
-Let's acquire another essential tool called `compose`.
+## Exercícios
 
-[Chapter 5: Coding by Composing](ch5.md)
-
-## Exercises
-
-A quick word before we start. We'll use a library called *ramda* which curries every function by default. Alternatively you may choose to use *lodash-fp* which does the same and is written/maintained by the creator of lodash. Both will work just fine and it is a matter of preference.
+Uma palavrinha antes de começar. Iremos usar uma biblioteca chamada *ramda*, que usa `currying` por padrão em todas suas funções. Outra alternativa é a biblioteca chamada *lodash-fp* que faz a mesma coisa, a mesma foi criada e é mantida pelo criador do lodash. Ambas funcionarão bem para aquilo que precisamos, escolha a que quiser.
 
 [ramda](http://ramdajs.com)
 [lodash-fp](https://github.com/lodash/lodash-fp)
 
-There are [unit tests](https://github.com/DrBoolean/mostly-adequate-guide/tree/master/code/part1_exercises) to run against your exercises as you code them, or you can just copy-paste into a javascript REPL for the early exercises if you wish.
+Aqui estão alguns [testes unitários](https://github.com/MostlyAdequate/mostly-adequate-guide-pt-BR/tree/master/code/part1_exercises) para rodar em seus exercícios, se preferir apenas copie e cole em algum lugar onde consiga executar instruções javascript, por exemplo no DevTools ou NodeJs.
 
-Answers are provided with the code in the [repository for this book](https://github.com/DrBoolean/mostly-adequate-guide/tree/master/code/part1_exercises/answers)
+As respostas estão junto com o código no [repositório deste livro](https://github.com/MostlyAdequate/mostly-adequate-guide-pt-BR/tree/master/code/part1_exercises/answers)
 
 ```js
 var _ = require('ramda');
 
 
-// Exercise 1
+// Exercício 1
 //==============
-// Refactor to remove all arguments by partially applying the function
+// Refatore essa função, removendo todos argumentos para `aplicação parcial`
 
 var words = function(str) {
   return _.split(' ', str);
 };
 
-// Exercise 1a
+// Exercício 1a
 //==============
-// Use map to make a new words fn that works on an array of strings.
+// Use a função `map` para fazer com que a função `word` funcione
+// em um array de strings.
 
 var sentences = undefined;
 
 
-// Exercise 2
+// Exercício 2
 //==============
-// Refactor to remove all arguments by partially applying the functions
+// Refatore essa função, removendo todos argumentos para `aplicação parcial`
 
 var filterQs = function(xs) {
   return _.filter(function(x){ return match(/q/i, x);  }, xs);
 };
 
 
-// Exercise 3
+// Exercício 3
 //==============
-// Use the helper function _keepHighest to refactor max to not reference any
-// arguments
+// Use a função auxiliar `_keepHighest` para refatorar a função `max` para
+// não referenciar nenhum argumento
 
-// LEAVE BE:
+// NÃO ALTERE ESSA FUNÇÃO:
 var _keepHighest = function(x,y){ return x >= y ? x : y; };
 
-// REFACTOR THIS ONE:
+// REFATORE ESSA:
 var max = function(xs) {
   return _.reduce(function(acc, x){
     return _keepHighest(acc, x);
   }, 0, xs);
 };
 
-
 // Bonus 1:
 // ============
-// wrap array's slice to be functional and curried.
+// encapsule a função array slice para se tornar funcional e do tipo 'curry'.
 // //[1,2,3].slice(0, 2)
 var slice = undefined;
 
 
 // Bonus 2:
 // ============
-// use slice to define a function "take" that takes n elements. Make it curried
+// use a função acima slice, para definir a função 'take'
+// para que ela retorne 'n' elementos. Faça ela ser 'curry' também.
+
 var take = undefined;
 ```

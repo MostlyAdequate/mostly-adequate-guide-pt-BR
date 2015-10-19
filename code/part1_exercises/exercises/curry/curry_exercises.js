@@ -2,55 +2,58 @@ require('../../support');
 var _ = require('ramda');
 
 
-// Exercise 1
+// Exercício 1
 //==============
-// Refactor to remove all arguments by partially applying the function
+// Refatore essa função, removendo todos argumentos para `aplicação parcial`
 
 var words = function(str) {
   return split(' ', str);
 };
 
-// Exercise 1a
+// Exercício 1a
 //==============
-// Use map to make a new words fn that works on an array of strings.
+// Use a função `map` para fazer com que a função `word` funcione
+// em um array de strings.
 
 var sentences = undefined;
 
 
-// Exercise 2
+// Exercício 2
 //==============
-// Refactor to remove all arguments by partially applying the functions
+// Refatore essa função, removendo todos argumentos para `aplicação parcial`
 
 var filterQs = function(xs) {
   return filter(function(x){ return match(/q/i, x);  }, xs);
 };
 
 
-// Exercise 3
+// Exercício 3
 //==============
-// Use the helper function _keepHighest to refactor max to not reference any arguments
+// Use a função auxiliar `_keepHighest` para refatorar a função `max` para
+// não referenciar nenhum argumento
 
-// LEAVE BE:
+// NÃO ALTERE ESSA FUNÇÃO:
 var _keepHighest = function(x,y){ return x >= y ? x : y; };
 
-// REFACTOR THIS ONE:
+// REFATORE ESSA:
 var max = function(xs) {
   return reduce(function(acc, x){
     return _keepHighest(acc, x);
   }, 0, xs);
 };
 
-  
+
 // Bonus 1:
 // ============
-// wrap array's slice to be functional and curried.
+// encapsule a função array slice para se tornar funcional e do tipo 'curry'.
 // //[1,2,3].slice(0, 2)
 var slice = undefined;
 
 
 // Bonus 2:
 // ============
-// use slice to define a function "take" that takes n elements. Make it curried
+// use a função acima slice, para definir a função 'take'
+// para que ela retorne 'n' elementos. Faça ela ser 'curry' também.
 var take = undefined;
 
 
