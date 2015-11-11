@@ -1,8 +1,8 @@
 require('../../support');
 var _ = require('ramda');
 var accounting = require('accounting');
-  
-// Example Data
+
+// Dados de exemplo
 var CARS = [
     {name: "Ferrari FF", horsepower: 660, dollar_value: 700000, in_stock: true},
     {name: "Spyker C12 Zagato", horsepower: 650, dollar_value: 648000, in_stock: false},
@@ -12,24 +12,24 @@ var CARS = [
     {name: "Pagani Huayra", horsepower: 700, dollar_value: 1300000, in_stock: false}
   ];
 
-// Exercise 1:
+// Exercício 1:
 // ============
-// use _.compose() to rewrite the function below. Hint: _.prop() is curried.
+// use a função _.compose() para reescrever a função abaixo. Dica: _.prop() é do tipo 'curry'.
 var isLastInStock = function(cars) {
   var reversed_cars = _.last(cars);
   return _.prop('in_stock', reversed_cars)
 };
 
-// Exercise 2:
+// Exercício 2:
 // ============
-// use _.compose(), _.prop() and _.head() to retrieve the name of the first car
+// use a função _.compose(), _.prop() e _.head() para ler o nome do primeiro carro
 var nameOfFirstCar = undefined;
 
 
-// Exercise 3:
+// Exercício 3:
 // ============
-// Use the helper function _average to refactor averageDollarValue as a composition
-var _average = function(xs) { return reduce(add, 0, xs) / xs.length; }; // <- leave be
+// Use a função _average para refatorar averageDollarValue para ser do tipo composition
+var _average = function(xs) { return reduce(add, 0, xs) / xs.length; }; // <- não mexa aqui
 
 var averageDollarValue = function(cars) {
   var dollar_values = map(function(c) { return c.dollar_value; }, cars);
@@ -37,18 +37,17 @@ var averageDollarValue = function(cars) {
 };
 
 
-// Exercise 4:
+// Exercício 4:
 // ============
-// Write a function: sanitizeNames() using compose that takes an array of cars and returns a list of lowercase and underscored names: e.g: sanitizeNames([{name: "Ferrari FF"}]) //=> ["ferrari_ff"].
+// Escreva a função: sanitizeNames() usando compose para que percorra o array de carros e retorne uma lista dos `names` em lowercase e underscore: exemplo: sanitizeNames([{name: "Ferrari FF"}]) //=> ["ferrari_ff"]
 
-var _underscore = replace(/\W+/g, '_'); //<-- leave this alone and use to sanitize
+var _underscore = replace(/\W+/g, '_'); //<-- não mexa aqui, apenas a use
 
 var sanitizeNames = undefined;
 
-
 // Bonus 1:
 // ============
-// Refactor availablePrices with compose.
+// Refatore availablePrices usando compose.
 
 var availablePrices = function(cars) {
   var available_cars = _.filter(_.prop('in_stock'), cars);
@@ -60,14 +59,13 @@ var availablePrices = function(cars) {
 
 // Bonus 2:
 // ============
-// Refactor to pointfree. Hint: you can use _.flip()
+// Refatore no estilo pointfree. Dica: você pode usar a função _.flip()
 
 var fastestCar = function(cars) {
   var sorted = _.sortBy(function(car){ return car.horsepower }, cars);
   var fastest = _.last(sorted);
   return fastest.name + ' is the fastest';
 };
-
 
 module.exports = { CARS: CARS,
                    isLastInStock: isLastInStock,

@@ -58,7 +58,7 @@ Composição é associativa, o que significa que não interessa como você as ag
 ```js
 compose(toUpperCase, compose(head, reverse));
 
-// or
+// ou
 compose(compose(toUpperCase, head), reverse);
 ```
 
@@ -81,8 +81,7 @@ loudLastUpper(['jumpkick', 'roundhouse', 'uppercut']);
 ```
 Aplicando a propriedade associativa, nos dá flexibilidade e a paz de mente que o resultado será equivalente. A definição `variadic` um pouco mais complicada está inclusa com o suporte de algumas bibliotecas para este livro, e a definição normal você encontrará em bibliotecas como [lodash][lodash-website], [underscore][underscore-website], e [ramda][ramda-website].
 
-Um dos benefícios da associativadade é que qualquer grupo de funções podem ser extraidas e
-agrupadas em sua própria composição. Vamos refatorar nosso exemplo anterior:
+Um dos benefícios da associativadade é que qualquer grupo de funções podem ser extraidas e agrupadas em sua própria composição. Vamos refatorar nosso exemplo anterior:
 
 ```js
 var loudLastUpper = compose(exclaim, toUpperCase, head, reverse);
@@ -103,7 +102,7 @@ Não existe respostas certas ou erradas - estamos apenas encaixando nossas peça
 
 ## Pointfree
 
-Estilo `Pointfree` significa nunca ter que mencionar seus dados. Desculpe. Significa que são funções que nunca mencionam os dados em que estão operando. Funções de primeira classe, currying, composição, todas elas jogam juntas para criar esse estilo.
+Estilo `Pointfree` significa nunca ter que mencionar seus dados. Desculpe, vou explicar melhor. Significa que são funções que nunca mencionam os dados em que estão operando. Funções de primeira classe, currying, composição, todas elas jogam juntas para criar esse estilo.
 
 ```js
 // não é pointfree porque menciona os dados: word
@@ -132,7 +131,7 @@ initials("hunter stockton thompson");
 // 'H. S. T'
 ```
 
-Códigos em Pointfree pode novamente nos ajudar a remover nomes desnecessários e deixar nosso código consiso e genérico.
+Códigos em Pointfree podem novamente nos ajudar a remover nomes desnecessários e deixar nosso código consiso e genérico.
 Pointfree é um bom exemplo de como testar se nosso código funcional está composto de pequenas funções que recebem uma entrada para uma saída. Não é possível compor um while loop, por exemplo. Mas cuidado, no entanto, pointfree é uma espada de dois gumes que pode as vezes não deixar clara sua real intenção. Nem todos códigos funcionais são pointfree e isso esta O.K. Vamos usá-las quando pudermos, e de outra forma, ficaremos com funções normais.
 
 ## Debugando
@@ -193,7 +192,7 @@ Teoria Categórica é uma ramificação da matemática abstrada que pode formali
 
 <img src="images/cat_theory.png" />
 
-Desculpe, eu não queria te assustar. Eu não espero que você já esteja intimamente familiarizado com todos esses conceitos. Meu objetivo aqui é te mostrar quanta duplicação nós temos, então você poderá ver porque a teoria categórica visa unificar tudas essas coisas.
+Desculpe, eu não queria te assustar. Eu não espero que você já esteja intimamente familiarizado com todos esses conceitos. Meu objetivo aqui é te mostrar quanta duplicação nós temos, então você poderá ver porque a teoria categórica visa unificar todas essas coisas.
 
 Em teoria categórica, temos algo chamado... uma categoria. A mesma é definida como uma coleção com os seguintes componentes:
 
@@ -233,7 +232,7 @@ Vamos introduzir uma função útil chamada `id`. Essa função simplesmente rec
 var id = function(x){ return x; };
 ```
 
-Você pode pensar "Mas para que diabos isso pode ser útil?". Iremos utilizá-la extensivamente nos próximos capítulos, mas agora pense nela como uma função que pode servir de substituto do nosso valor - uma função que mascara nossos dados.
+Você pode pensar "Mas para que diabos isso pode ser útil?". Iremos utilizá-la muitas vezes nos próximos capítulos, mas agora pense nela como uma função que pode servir de substituto do nosso valor - uma função que mascara nossos dados.
 
 `id` deve interagir bem com compose(composição). Aqui temos uma propriedade que está em conformidade com cada unary[^unary: função de apenas um argumento] função f:
 
@@ -247,27 +246,24 @@ Hey, isso é como a propriedade de indentidade em números. Se isso ainda não e
 
 Então, o que você tem é isso, uma categoria de tipos e funções. Se essa é sua primeira indrodução, imagino que você esteja ainda um pouco confuso do que é uma categoria e porque ela é útil. É sobre essa base de conhecimento que iremos trabalhar neste livro. A partir de agora, neste capítulo, nesta linha, você pode pelo menos ver isso como algo que nos traz alguma sabedoria sobre composição - ou seja, as propriedades associativa e de identidade.
 
-O que são algumas das outras categorias ? Bem,
+O que são as outras categorias ? Bom, nós podemos definir um grafo direcionado com nós, como objetos, arestas como morfismos e composição apenas sendo uma forma de concatenação. Podemos definir números como objetos e `>=` como morfismo[^na verdade qualquer ordem parcial ou total podem ser uma categoria]. Existem muitas categorias, mas para o propósito deste livro, vamos apenas nos preocupar com que vimos acima. Já cobrimos o suficiente a superfície e temos de seguir em frente.
 
-What are some other categories, you ask? Well, we can define one for directed graphs with nodes being objects, edges being morphisms, and composition just being path concatenation. We can define with Numbers as objects and `>=` as morphisms[^actually any partial or total order can be a category]. There are heaps of categories, but for the purposes of this book, we'll only concern ourselves with the one defined above. We have sufficiently skimmed the surface and must move on.
+## Em Resumo
+Composição conecta nossas funções como se fossem vários tubos. Os dados fluirão através de nossa aplicação de forma adequada - funções puras são funções de uma entrada para uma saída, e quebrando essa cadeia, você estaria negligenciando a saída, tornando nosso programa inútil.
 
+Nós adotamos a composição como um `design principle` acima de todos os outros. E o motivo é porque ele deixa nosso app simples e sensato. Teoria categórica terá um papel muito importante na arquitetura do app, modelando os efeitos colaterais e garantindo a precisão do programa.
 
-## In Summary
-Composition connects our functions together like a series of pipes. Data will flow through our application as it must - pure functions are input to output after all so breaking this chain would disregard output, rendering our software useless.
+Estamos agora no ponto onde podemos ver bem alguns exemplos práticos. Vamos criar um exemplo de aplicação.
 
-We hold composition as a design principle above all others. This is because it keeps our app simple and reasonable. Category theory will play a big part in app architecture, modelling side effects, and ensuring correctness.
+[Capítulo 6: Exemplo de Aplicação](ch6-pt-BR.md)
 
-We are now at a point where it would serve us well to see some of this in practice. Let's make an example application.
-
-[Chapter 6: Example Application](ch6.md)
-
-## Exercises
+## Exercícios
 
 ```js
 var _ = require('ramda');
 var accounting = require('accounting');
 
-// Example Data
+// Dados de exemplo
 var CARS = [
     {name: "Ferrari FF", horsepower: 660, dollar_value: 700000, in_stock: true},
     {name: "Spyker C12 Zagato", horsepower: 650, dollar_value: 648000, in_stock: false},
@@ -277,23 +273,23 @@ var CARS = [
     {name: "Pagani Huayra", horsepower: 700, dollar_value: 1300000, in_stock: false}
   ];
 
-// Exercise 1:
+// Exercício 1:
 // ============
-// use _.compose() to rewrite the function below. Hint: _.prop() is curried.
+// use a função _.compose() para reescrever a função abaixo. Dica: _.prop() é do tipo 'curry'.
 var isLastInStock = function(cars) {
   var last_car = _.last(cars);
   return _.prop('in_stock', last_car);
 };
 
-// Exercise 2:
+// Exercício 2:
 // ============
-// use _.compose(), _.prop() and _.head() to retrieve the name of the first car
+// use a função _.compose(), _.prop() e _.head() para ler o nome do primeiro carro
 var nameOfFirstCar = undefined;
 
 
-// Exercise 3:
+// Exercício 3:
 // ============
-// Use the helper function _average to refactor averageDollarValue as a composition
+// Use a função _average para refatorar averageDollarValue para ser do tipo composition
 var _average = function(xs) { return _.reduce(_.add, 0, xs) / xs.length; }; // <- leave be
 
 var averageDollarValue = function(cars) {
@@ -302,9 +298,9 @@ var averageDollarValue = function(cars) {
 };
 
 
-// Exercise 4:
+// Exercício 4:
 // ============
-// Write a function: sanitizeNames() using compose that returns a list of lowercase and underscored names: e.g: sanitizeNames(["Hello World"]) //=> ["hello_world"].
+// Escreva a função: sanitizeNames() usando compose para que percorra o array de carros e retorne uma lista dos `names` em lowercase e underscore: exemplo: sanitizeNames([{name: "Ferrari FF"}]) //=> ["ferrari_ff"]
 
 var _underscore = _.replace(/\W+/g, '_'); //<-- leave this alone and use to sanitize
 
@@ -313,7 +309,7 @@ var sanitizeNames = undefined;
 
 // Bonus 1:
 // ============
-// Refactor availablePrices with compose.
+// Refatore availablePrices usando compose.
 
 var availablePrices = function(cars) {
   var available_cars = _.filter(_.prop('in_stock'), cars);
@@ -322,10 +318,9 @@ var availablePrices = function(cars) {
   }).join(', ');
 };
 
-
 // Bonus 2:
 // ============
-// Refactor to pointfree. Hint: you can use _.flip()
+// Refatore no estilo pointfree. Dica: você pode usar a função _.flip()
 
 var fastestCar = function(cars) {
   var sorted = _.sortBy(function(car){ return car.horsepower }, cars);
