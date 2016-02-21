@@ -241,7 +241,7 @@ Escrever código inseguro é como ter o trabalho de pintar e decorar ovos, para 
 
 Eu seria muito negligente se não mencionasse que em uma implementação "real", `Maybe` é dividido em duas partes: uma para algo e outra para nada. Isso nos permite obedecer a parametrização do `map`, então valores como `null` e `undefined` podem ainda ser mapeados, e a qualificação universal de valores de um functor serão respeitados. Você frequentemente verá tipos como `Some(x) / None` ou `Just(x) / Nothing` em vez de um `Maybe` que faz uma verificação de `null` no seu valor.
 
-## Tratadores de Errors Puros
+## Tratadores de Erros Puros
 
 <img src="images/fists.jpg" alt="pick a hand... need a reference" />
 
