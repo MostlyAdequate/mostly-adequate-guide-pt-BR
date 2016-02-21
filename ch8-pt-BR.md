@@ -8,7 +8,7 @@
 Vimos como escrever programas que passam dados através de uma série de funções puras. Elas são
 especificações declarativas de comportamento. Mas o que dizer em relação ao fluxo, tratamentos de
 erros, ações assíncronas, estado, e ouso dizer, efeitos?! Neste capítulo descobriremos a fundação
-pela qual todas essas úteis abstrações são construidas. 
+pela qual todas essas úteis abstrações são construidas.
 
 Primeiro contruiremos um container. Esse container deve saber lidar com qualquer tipo de valor; um
 saco plástico que serve apenas para proteger um pudim é raramente útil. Nosso container será um
@@ -94,7 +94,7 @@ o mesmo `Container` por questões de segurança. E como resultado de nunca deixa
 podemos continuar mapeando e executando funções o quanto quisermos. Podemos até mesmo alterar o
 valor conforme avançamos conforme mostrado nos três exemplos anteriores.
 
-Espere um pouco, e se continuarmos a chamar `map`, isso parece ser um tipo de composição! Que tipo de mágica matemática está acontecendo aqui? Muito bem, acabamos de descobrir o que são *Functors*. 
+Espere um pouco, e se continuarmos a chamar `map`, isso parece ser um tipo de composição! Que tipo de mágica matemática está acontecendo aqui? Muito bem, acabamos de descobrir o que são *Functors*.
 
 > Um Functor é um tipo que implementa `map` e obedece algumas leis
 
@@ -176,7 +176,7 @@ streetName({addresses: [{street: "Shady Ln.", number: 4201}]});
 // Maybe("Shady Ln.")
 ```
 
-`safeHead` é como nosso `_.head`, mas de uma forma mais segura. Uma coisa curiosa acontece quando indroduzimos `Maybe` dentro de nosso código; somos forçados a lidar com esses sorrateiros valores `null`. A função `safeHead` é honesta e olha na frente sobre uma possível falha - não há nada para se envergonhar - então ela retorna um `Maybe` para informar-nos isso. Somos mais do que meramente *informados*, no entanto, devido a sermos forçados a usar `map` para pegar o valor que queremos, uma vez que o valor fica escondido dentro do objeto `Maybe`. Essencialmente, ela é um verificador de `null` imposta pela função `safeHead`. Agora podemos dormir tranquilos sabendo que o valor `null` não irá elevar sua horrorosa cabeça decapitada quando menos esperarmos. Apis como essas tornam aplicações do papel em aplicações reais e robustas, e ainda garantem um software seguro. 
+`safeHead` é como nosso `_.head`, mas de uma forma mais segura. Uma coisa curiosa acontece quando indroduzimos `Maybe` dentro de nosso código; somos forçados a lidar com esses sorrateiros valores `null`. A função `safeHead` é honesta e olha na frente sobre uma possível falha - não há nada para se envergonhar - então ela retorna um `Maybe` para informar-nos isso. Somos mais do que meramente *informados*, no entanto, devido a sermos forçados a usar `map` para pegar o valor que queremos, uma vez que o valor fica escondido dentro do objeto `Maybe`. Essencialmente, ela é um verificador de `null` imposta pela função `safeHead`. Agora podemos dormir tranquilos sabendo que o valor `null` não irá elevar sua horrorosa cabeça decapitada quando menos esperarmos. Apis como essas tornam aplicações do papel em aplicações reais e robustas, e ainda garantem um software seguro.
 
 As vezes uma função pode retornar um `Maybe(null)` explicitamente para sinalizar uma falha. Por exemplo:
 
@@ -204,9 +204,9 @@ getTwenty({ balance: 10.00});
 // Maybe(null)
 ```
 
-`withdraw` irá torcer o nariz para nós e retornar `Maibe(null)` se o dinheiro não for suficiente. Essa função também comunica sua inconstância e nos deixa sem escolha de continuar o `map`. A direfença é que `null` foi intencional aqui. Em vez de um `Maybe(String)`, nós recebemos um `Maybe(null)` como sinal de falha, e nossa aplicação efetivamente interrompe seu trajeto. É importante notar: se o `withdraw` falhar, então `map` irá cortar o resto do nosso cálculo uma vez que não irá mais executar a função passada, no caso a `finishTransaction`. Este é exatamente o comportamento que queremos, de não alterar nosso registro ou mostrar o novo balanço da conta. 
+`withdraw` irá torcer o nariz para nós e retornar `Maibe(null)` se o dinheiro não for suficiente. Essa função também comunica sua inconstância e nos deixa sem escolha de continuar o `map`. A direfença é que `null` foi intencional aqui. Em vez de um `Maybe(String)`, nós recebemos um `Maybe(null)` como sinal de falha, e nossa aplicação efetivamente interrompe seu trajeto. É importante notar: se o `withdraw` falhar, então `map` irá cortar o resto do nosso cálculo uma vez que não irá mais executar a função passada, no caso a `finishTransaction`. Este é exatamente o comportamento que queremos, de não alterar nosso registro ou mostrar o novo balanço da conta.
 
-## Soltar o Valor
+## Liberando o Valor
 
 Um coisa que as pessoas geralmente esquecem, é que sempre haverá um final da linha; alguma função que envia um JSON, imprime na tela, altera nosso filesystem ou qualquer outra coisa. Não podemos entregar uma saída com `return`, devemos executar alguma função ou outra para enviar para o mundo exterior. Podemos nos expressar como no koan Zen Budista: "Se um programa não possui nenhum efeito observável, ele de fato executa?". Ele executa corretamente para sua própria satisfação? Suspeito que meramente executa alguns ciclos e depois volta a dormir...
 
@@ -237,7 +237,7 @@ Iremos agora retornar um valor estático (do mesmo tipo que `finishTransaction` 
 
 A introdução de `Maybe` pode causar algum desconforto no começo. Usuários de Swift e Scale vão saber do que estou falando pois essas linguagens possuem uma implementação na forma de `Option(al)`. Quando tem que lidar com verificações de `null` todo tempo(e tem vezes que sabemos com absoluta certeza que o valor existe), e muitas pessoas acham isso muito trabalhoso. Seja como for, com tempo isso vai ficando mais natural e você irá provavelmente gostar da segurança que isso traz. Afinal, na maioria das vezes isso irá prevenir problemas no código e salvar nossas peles.
 
-Escrever código inseguro é como ter o trabalho de pintar e decorar ovos, para depois atirá-los no meio da rua; ou construir casas como o material que os três porquinhos construiram. Nos fará muito bem colocar segurança em nossas funções, e `Maybe` nos ajuda exatamente com isso. 
+Escrever código inseguro é como ter o trabalho de pintar e decorar ovos, para depois atirá-los no meio da rua; ou construir casas como o material que os três porquinhos construiram. Nos fará muito bem colocar segurança em nossas funções, e `Maybe` nos ajuda exatamente com isso.
 
 Eu seria muito negligente se não mencionasse que em uma implementação "real", `Maybe` é dividido em duas partes: uma para algo e outra para nada. Isso nos permite obedecer a parametrização do `map`, então valores como `null` e `undefined` podem ainda ser mapeados, e a qualificação universal de valores de um functor serão respeitados. Você frequentemente verá tipos como `Some(x) / None` ou `Just(x) / Nothing` em vez de um `Maybe` que faz uma verificação de `null` no seu valor.
 
@@ -331,7 +331,7 @@ Quando `birthdate` é válido, o programa mostra na tela o seu maior segredo (su
 
 Neste exemplo, estamos logicamente dividindo nosso fluxo de controle dependendo da validade da data de nascimento, e ainda sim estamos nos movendo de forma linear da direita para esquerda, e não escalando através das chaves de instruções condicionais. Normalmente movemos o `console.log` para fora da função `zoltar` a damos `map` no momento da chamada, e isso é útil para ver como a parte `Right` se difere. Nós usamos `_` no tipo de assinatura direita para indicar que há um valor que deve ser ignorado[Em alguns navegadores você terá que usar `console.log.bin(console)` para usá-lo como sendo de primeira classe].
 
-Gostaria de usar essa oportunidades para apontar algo que pode ser que você tenha perdido: `fortune` apesar de usar `Either` neste exemplo, não tem conhecimento sobre a presença de algum functor. Esse é o caso com `finishTransaction` no exemplo anterior. Quando chamada, uma função pode ser envolvida por `map` e transforma uma função não functor, em um functor. E esse processo é chamado de *lifting*. Funções tendem a trabalhar melhor com tipos normais de dados em vez de tipos container, portanto quando preciso, é feito o *lifting* dentro de um container adequado. Isso trás simplicidade e torna as funções mais reusáveis podendo serem alteradas para trabalhar com qualquer tipo de functor sobre demanda.  
+Gostaria de usar essa oportunidades para apontar algo que pode ser que você tenha perdido: `fortune` apesar de usar `Either` neste exemplo, não tem conhecimento sobre a presença de algum functor. Esse é o caso com `finishTransaction` no exemplo anterior. Quando chamada, uma função pode ser envolvida por `map` e transforma uma função não functor, em um functor. E esse processo é chamado de *lifting*. Funções tendem a trabalhar melhor com tipos normais de dados em vez de tipos container, portanto quando preciso, é feito o *lifting* dentro de um container adequado. Isso trás simplicidade e torna as funções mais reusáveis podendo serem alteradas para trabalhar com qualquer tipo de functor sobre demanda.
 
 `Either` é ótima para erros comuns como validações mas também para coisas mais sérias, como interromper erros de execução de arquivos ausentes (missing files) ou problemas de conexão de sockets. Tente substituir alguns dos exemplos com `Maybe` por `Either` para obter melhor resultado.
 
@@ -380,7 +380,7 @@ var getFromStorage = function(key) {
 Se não tivéssemos envolvido `getFromStorage` em outra função, a mesma poderia mudar sua saída por depender de circunstâncias externas. Colocando outra função, sempre teremos a mesma saída dada uma mesma entrada: uma função que quando chamada, recupera um item do `localStorage`. E dessa forma(quem sabe com mais alguns Ave-Marias) ficamos com a conciência tranquila e com os nossos pecados perdoados.
 
 
-Mas, isso não é muito útil. Pois é como um boneco de brinquedo dentro de seu pacote original, não podemos brincar com ele. Se houvesse uma forma de atingir o interior de um container e pegar o seu conteúdo...esse é `IO`: 
+Mas, isso não é muito útil. Pois é como um boneco de brinquedo dentro de seu pacote original, não podemos brincar com ele. Se houvesse uma forma de atingir o interior de um container e pegar o seu conteúdo...esse é `IO`:
 
 
 ```js
@@ -427,7 +427,7 @@ Aqui `io_window` é um real `IO` que podemos usar `map` diretamente, onde `$` é
 
 Tire um tempo para canalizar sua intuição functor. Se vermos a fundo os detalhes da implementação, nos sentiremos em casa mapeando qualquer tipo de container independente de sua pecualiriedade. Temos as leis do functor das quais iremos explorar no final do capítulo, para agradecer por esse super poder psíquico. De qualquer forma, finalmente podemos trabalhar com valores impuros sem sacrificar nossa preciosa pureza.
 
-Agora, prendemos a besta numa jaula, mas teremos que deixá-la livre em alguns pontos. Quando nosso `IO` é mapeado, são criadas várias operações inpuras onde executá-las é realmente uma perturbação da paz. Então quando é o momento certo de soltá-las ? É mesmo possível executar nosso `IO` a ainda sim entrar de vestido branco no casamento? A resposta é sim, se colocarmos o ônus na chamada do código. Nosso código puro, apesar da trama nefasta e das intrigas, se mantém inocente e é o que chama e fica com toda responsabilidade de executar os efeitos. Vamos ver um exemplo para tornar isso concreto. 
+Agora, prendemos a besta numa jaula, mas teremos que deixá-la livre em alguns pontos. Quando nosso `IO` é mapeado, são criadas várias operações inpuras onde executá-las é realmente uma perturbação da paz. Então quando é o momento certo de soltá-las ? É mesmo possível executar nosso `IO` a ainda sim entrar de vestido branco no casamento? A resposta é sim, se colocarmos o ônus na chamada do código. Nosso código puro, apesar da trama nefasta e das intrigas, se mantém inocente e é o que chama e fica com toda responsabilidade de executar os efeitos. Vamos ver um exemplo para tornar isso concreto.
 
 ```js
 
@@ -468,14 +468,14 @@ IO.prototype.map = function(f) {
 }
 ```
 
-Bem melhor. Agora nosso código de chamada fica sendo `findParam("searchTerm").unsafePerformIO()`, que fica claro como o dia 
+Bem melhor. Agora nosso código de chamada fica sendo `findParam("searchTerm").unsafePerformIO()`, que fica claro como o dia
 para nossos usuários(e leitores) da aplicação.
 
 `IO` será um fiél companheiro, nos ajudando a domar essas selvagens e inpuras ações. A seguir, iremos ver um tipo similar em espírito, mas que é usado de uma forma extremamente diferente.
 
 ## Tarefas Assíncronas
 
-Callbacks são a escada espiral para o inferno. Eles são fluxos de controle como os designs do artista gráfico M.C. Escher. Com cada callback aninhado e espremido entre os emaranhados de parênteses e chaves, eles se sentem como prisioneiros numa masmorra(o quão longe podemos ir?). Estou com calafrios só de pensar neles. Não vamos temer, temos um caminho bem melhor de lidar com código assíncrono e esse caminho começa com a letra "F".  
+Callbacks são a escada espiral para o inferno. Eles são fluxos de controle como os designs do artista gráfico M.C. Escher. Com cada callback aninhado e espremido entre os emaranhados de parênteses e chaves, eles se sentem como prisioneiros numa masmorra(o quão longe podemos ir?). Estou com calafrios só de pensar neles. Não vamos temer, temos um caminho bem melhor de lidar com código assíncrono e esse caminho começa com a letra "F".
 
 O mecanismo interno dessa abordagem é um pouco complicado para colocarmos toda nesta página, portanto usaremos `Data.Task` (anteriormente `Data.Future`) de Quildreen Motta, a fantástica [Folktale](http://folktalejs.org/). Alguns exemplos de uso:
 
@@ -595,7 +595,7 @@ Na prática, você provavelmente terá várias tarefas assíncronas em um fluxo 
 
 ## Um Pouco de Teoria
 
-Como mencionado antes, functors tem sua origem da teoria das categorias e satisfazem algumas leis. Primeiro vamos explorar algumas propriedades úteis. 
+Como mencionado antes, functors tem sua origem da teoria das categorias e satisfazem algumas leis. Primeiro vamos explorar algumas propriedades úteis.
 
 ```js
 // identidade - identity
@@ -632,7 +632,7 @@ compLaw2(Container.of("Goodbye"));
 
 Nas teoria das categorias, functors levam os objetos e morfismos de categoria, e mapeiam elas para uma diferente categoria. Por definição, essa nova categoria deve possuir uma identidade e a habilidade de compor mosfismo, mas não necessitamos verificar isso pois as leis mencionadas acima garantem o mesmo.
 
-Talvez nossa definição de uma categoria ainda esteja um pouco confusa. Você pode pensar em uma categoria como uma rede de objetos onde a conexão é feita através de morfismo. Portanto um functor mapeia uma categoria para outra sem quebrar a rede. Se um objeto `a` está em nossa categoria de código `C`, e então a mapeamos para uma categoria `D` com um functor `F`, nos referimos esse objeto como `F a` (Se você colocá-los juntos, o que isso significa?!). De repente é melhor darmos uma olhada no diagrama:  
+Talvez nossa definição de uma categoria ainda esteja um pouco confusa. Você pode pensar em uma categoria como uma rede de objetos onde a conexão é feita através de morfismo. Portanto um functor mapeia uma categoria para outra sem quebrar a rede. Se um objeto `a` está em nossa categoria de código `C`, e então a mapeamos para uma categoria `D` com um functor `F`, nos referimos esse objeto como `F a` (Se você colocá-los juntos, o que isso significa?!). De repente é melhor darmos uma olhada no diagrama:
 
 <img src="images/catmap.png" alt="Categories mapped" />
 
@@ -760,7 +760,7 @@ var ex4 = undefined
 var getPost = function (i) {
   return new Task(function(rej, res) {
     setTimeout(function(){
-      res({id: i, title: 'Love them futures'})  
+      res({id: i, title: 'Love them futures'})
     }, 300)
   });
 }
