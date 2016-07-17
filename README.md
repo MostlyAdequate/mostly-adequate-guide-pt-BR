@@ -42,7 +42,7 @@ gitbook mobi . ./functional.mobi
 
 # Conteúdo
 
-Veja [SUMMARY.md](SUMMARY-pt-BR.md)
+Veja [SUMMARY.md](SUMMARY.md)
 
 ### Contribuir
 
