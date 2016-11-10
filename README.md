@@ -3,7 +3,7 @@
 # Sobre o livro
 
 
-Este livro é sobre o paradigma funcional. E para aprender, usaremos a linguagem funcional mais popular do mundo: JavaScript. Alguns pensam que essa linguagem não é um boa escolha por acharem que ela é predominantemente imperativa. No entanto, acredito que é a melhor forma de aprender ``FP`` por vários motivos:
+Este livro é sobre o paradigma funcional. E para aprender, usaremos a linguagem funcional mais popular do mundo: JavaScript. Alguns pensam que essa linguagem não é uma boa escolha por acharem que ela é predominantemente imperativa. No entanto, acredito que é a melhor forma de aprender ``FP`` por vários motivos:
 
  * Você provavelmente usa JavaScript no seu trabalho:
 
@@ -11,13 +11,13 @@ Este livro é sobre o paradigma funcional. E para aprender, usaremos a linguagem
 
  * Nós não temos que aprender absolutamente tudo antes, para começar a programar.
 
-    Em uma ``linguagem funcional pura``, você não pode declarar uma variável ou ler um nó do ``DOM`` sem usar ``monads``. Aqui aprendemos a purificar nosso código com algumas trapaças. E também é mais fácil de começar com JavaScript, pois ele possui uma mistura de paradigmas, e você pode usar suas práticas comuns enquanto não possui todos conhecimentos necessários.
+    Em uma ``linguagem funcional pura``, você não pode declarar uma variável ou ler um nó do ``DOM`` sem usar ``monads``. Aqui aprendemos a purificar nosso código com algumas trapaças. E também é mais fácil de começar com JavaScript, pois ele possui uma mistura de paradigmas, e você pode usar suas práticas comuns enquanto não possui todos os conhecimentos necessários.
 
  * A linguagem é totalmente capaz de escrever código funcional de alto nível.
 
-    Nós temos tudo que precisamos para simular linguagens como Sclala ou Haskell com o auxílio de uma ou duas bibliotecas. Atualmente OOP (Object-oriented programing/Programação Orientada a Objetos) é dominante no mercado, e claramente em JavaScript isso é um pouco desajeitado. Seria como "acampar no meio de uma estrada" ou "fazer sapateado usando botas de boracha". Nós temos que usar ``bind`` em todos lugares onde queremos usar o escopo do ``this``, nós não temos classes[ainda], temos que tratar o comportamento do ``new`` quando o mesmo é esquecido de ser invocado, membros privados são apenas disponíveis por meio de ``closures``. E por isso, para muitos de nós, ``FP`` parece ser mais natural.
+    Nós temos tudo que precisamos para simular linguagens como Scala ou Haskell com o auxílio de uma ou duas bibliotecas. Atualmente OOP (Object-oriented programing/Programação Orientada a Objetos) é dominante no mercado, e claramente em JavaScript isso é um pouco desajeitado. Seria como "acampar no meio de uma estrada" ou "fazer sapateado usando botas de borracha". Nós temos que usar ``bind`` em todos lugares onde queremos usar o escopo do ``this``, nós não temos classes[ainda], temos que tratar o comportamento do ``new`` quando o mesmo é esquecido de ser invocado, membros privados são apenas disponíveis por meio de ``closures``. E por isso, para muitos de nós, ``FP`` parece ser mais natural.
 
-Dito isto, programar em linguagem funcional será sem dúvida a melhor forma de aprender os conceitos propostos neste livro. JavaScript será o meio de aprendermos este paradigma, onde você mesmo é quem irá aplicá-lo. Felizmente, todas as interfaces são matemáticas e portanto universais. Você se sentirá familiarizado com linguagens como Swiftz, Scala, Haskell, Purescript e outros ambientes matematicamente inclinados.
+Dito isto, programar em linguagem funcional será sem dúvida a melhor forma de aprender os conceitos propostos neste livro. JavaScript será o meio de aprendermos este paradigma, onde você mesmo é quem irá aplicá-lo. Felizmente, todas as interfaces são matemáticas e portanto universais. Você se sentirá familiarizado com linguagens como Swift, Scala, Haskell, Purescript e outros ambientes matematicamente inclinados.
 
 ### Gitbook (para uma melhor experiência)
 
