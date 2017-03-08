@@ -134,7 +134,7 @@ isPrime[3];
 
 Tudo bem, você quer calcular em vez de escrever manualmente os valores das coisas, mas isso é apenas uma ilustração de uma maneira diferente de pensar sobre funções.[^Você deve estar pensando "e quando as funções possuem vários argumentos?". De fato, em termos matemáticos isso se torna um pouco inconveniente. Mas no momento, vamos considerar a entrada apenas um array ou um objeto de `argumentos`. Quando aprendermos sobre *currying*, veremos como podemos definir de uma forma matematicamente correta uma função.]
 
-Se prepare para a revelação dramática: Funções Puras *são* funções matemáticas e isso é do que se trata a programação funcional. Programando com esses pequenos anjos, nos trazem enormes benefícios. Vamos dar uma olhada em algumas razões pelas quais estamos dispostos a ir tão longe para preservar a pureza.
+Se prepare para a revelação dramática: Funções Puras *são* funções matemáticas e isso é do que se trata a programação funcional. Programar com esses pequenos anjos, nos trazem enormes benefícios. Vamos dar uma olhada em algumas razões pelas quais estamos dispostos a ir tão longe para preservar a pureza.
 
 ## Em busca de pureza
 
@@ -188,7 +188,7 @@ Isso não é muito útil agora, mas breve vamos aprender alguns truques que usar
 
 ### Portátil / Auto-Documentável
 
-Funções puras são completamente auto contidas. Tudo que a função precisa é que a sirvam com "uma bandeja de prata". Para e pense por um momento... Como isso pode ser benéfico? Para começar, as dependências das funções são explicitas, portanto fácil de ver e entender - e não coisas entranhas acontecendo por trás dos panos.
+Funções puras são completamente auto contidas. Tudo que a função precisa é que a sirvam com "uma bandeja de prata". Pare e pense por um momento... Como isso pode ser benéfico? Para começar, as dependências das funções são explicitas, portanto fica fácil de ver e entender - ao contrário de coisas entranhas acontecendo por trás dos panos.
 
 ```js
 //impura
@@ -208,7 +208,7 @@ var signUp = function(Db, Email, attrs) {
 
 O exemplo aqui mostra que a função pura deve ser transparente sobre suas dependências, e portanto nos diga exatamente o que ela faz. Apenas olhando sua assinatura, pelo menos, sabemos que ela vai usar `Db`, `Email` e `attrs`.
 
-Iremos aprender como criar funções puras não apenas adiando sua avaliação, mas aqui deve estar claro, funções puras são muito mais informativas que as traiçoeiras funções inpuras.
+Iremos aprender como criar funções puras não apenas atrasando sua avaliação, mas aqui deve estar claro, funções puras são muito mais informativas que as traiçoeiras funções inpuras.
 
 Outra coisa que temos que salientar é que somos forçados a "injetar" dependências, ou passá-los como argumentos, o que torna nosso app muito mais flexível porque parametrizamos nosso banco de dados, e-mail ou qualquer outra informação necessária[^Não se preocupe, veremos como fazer isso de uma forma menos chata do que parece]. Se precisarmos informar um outro Db, basta chamar nossa função como este outro Db. Se precisarmos criar um novo aplicativo e quisermos usar essa nossa função confiável, basta passarmos os novos parâmetros para `Db` e `Email`.
 
@@ -304,7 +304,7 @@ Na verdade, iremos usar essa técnica ao longo do livro.
 
 Finalmente, aqui está o golpe de misericórdia, podemos rodar qualquer função pura em paralelo, já que a mesma não precisa de acesso a memória compartilhada e não pode, por definição, possuir concorrência devido a algum efeito coleteral.
 
-Isto é totalmente possível tanto em um ambiente servidor js com threads, bem como no navegador com `web workers`, embora a cultura atual pareça evita-lá devido a complexidade quando se trata de funções impuras.
+Isto é totalmente possível tanto em um ambiente servidor js com threads, bem como no navegador com `web workers`, embora a cultura atual pareça evitá-la devido a complexidade quando se trata de funções impuras.
 
 ## Em Resumo
 

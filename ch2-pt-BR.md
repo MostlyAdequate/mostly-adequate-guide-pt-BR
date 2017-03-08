@@ -1,8 +1,8 @@
-# Capítulo 2: Funcões de Primeira Classe
+# Capítulo 2: Funções de Primeira Classe
 
 ## Revisão rápida
 
-Quando dizemos que funções são de primeira classe (first class), significa que são como qualquer outro...classes normais [^como assim professor?]. Podem ser tratados como qualquer outro tipo de dado, não há nenhum comportamento em particular - pode ser um valor dentro de um array, pode ser um argumento de função, pode ser atribuido a uma variável...aquilo que precisar.
+Quando dizemos que funções são de primeira classe (first class), significa que são como qualquer outra...classes normais [^como assim professor?]. Podem ser tratados como qualquer outro tipo de dado, não há nenhum comportamento em particular - pode ser um valor dentro de um array, pode ser um argumento de função, pode ser atribuido a uma variável...aquilo que precisar.
 
 Isso é o básico do Javascript, mas se você procurar alguns códigos no github, verá a ignorância sobre esse conceito. Preciso lhe mostrar um exemplo? Claro, vamos lá!
 
@@ -39,9 +39,9 @@ greeting("times");
 // "Hi times"
 ```
 
-Em outras palavras, `hi` já é uma função que espera apenas um argumento, então porque inserir outra função para simplesmente chamar `hi` dentro dela com o mesmo maldito argumento? Isso não faz o menor sentido. É como você vestir seu casado mais pesado apenas para ir comprar um sorvete.
+Em outras palavras, `hi` já é uma função que espera apenas um argumento, então porque inserir outra função para simplesmente chamar `hi` dentro dela com o mesmo maldito argumento? Isso não faz o menor sentido. É como você vestir seu casaco mais pesado apenas para ir comprar um sorvete.
 
-Isso é verboso e uma má prática, colocar uma função dentro da outra somente para retardar sua avaliação.( Logo veremos esse caso, mas tem a ver com manuteção de código );
+Isso é verboso e uma má prática, colocar uma função dentro da outra somente para retardar sua avaliação. (Logo veremos esse caso, mas tem a ver com manuteção de código);
 
 Entender bem essa parte antes de seguirmos é importantissímo, por isso vamos ver mais alguns exemplos divertidos que encontrei no npm modules.
 
@@ -57,7 +57,7 @@ var getServerStuff = function(callback){
 var getServerStuff = ajaxCall;
 ```
 
-O mundo está cheio de código ajax como este. Está é a razão do porque os dois são equivalentes.
+O mundo está cheio de código ajax como este. Esta é a razão do porque os dois são equivalentes.
 
 ```js
 // essa linha

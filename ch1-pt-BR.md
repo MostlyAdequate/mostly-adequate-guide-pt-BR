@@ -2,7 +2,7 @@
 
 ## Introdução
 
-Olá eu sou o Professor Franklin Risby, prazer em conhece-lo! Iremos passar um tempo juntos para que eu lhe ensine um pouco sobre programação funcional. Eu já falei sobre mim, me conte sobre você! Espero que você já esteja familiarizado com JavaScript, tenha um pouco de experiência com Orientação a Objetos and fancy yourself a working class programmer. Você não precisa ter um PHD em Entomologia, você apenas precisa saber como encontrar e matar alguns ``Bugs``.
+Olá eu sou o Professor Franklin Risby, prazer em conhecê-lo! Iremos passar um tempo juntos para que eu lhe ensine um pouco sobre programação funcional. Eu já falei sobre mim, me conte sobre você! Espero que você já esteja familiarizado com JavaScript, tenha um pouco de experiência com Orientação a Objetos and fancy yourself a working class programmer. Você não precisa ter um PHD em Entomologia, você apenas precisa saber como encontrar e matar alguns ``Bugs``.
 
 Não suponho que você tenha algum conhecimento anterior com programação funcional, mas suponho que tenha conhecimento de passar por situações desfavoráveis que aparecem quando trabalhamos com estados mutáveis, efeitos colaterais irrestritos e unprincipled design. Agora que estamos apresentados, vamos começar.
 
@@ -112,14 +112,14 @@ add(multiply(flock_b, flock_a), multiply(flock_a, flock_b));
 multiply(flock_b, add(flock_a, flock_a));
 ```
 Brilhante, não temos que escrever um pingo de código personalizado, apenas chamar nossas funções.
-Definimos `add` e `multiply` nós mesmos, mas não há necessidade de escreve-las - Certamente existe uma implementação das mesmas fornecida por alguma biblioteca.
+Definimos `add` e `multiply` nós mesmos, mas não há necessidade de escrevê-las - Certamente existe uma implementação das mesmas fornecida por alguma biblioteca.
 
 Você deve estar pensando "Que esperto você, dando um exemplo puramente matemático!". Ou "Programas reais não são tão simples e não podem ser resolvidos desta forma". Escolhi esse exemplo porque muitos de nós conhecemos bem adição e multiplicação, então é fácil perceber como a matemática pode ser útil para nós aqui.
 
-Então não se desespere, iremos por partes em teoria da categoria, teoria dos conjuntos e cálculo  lambda para programar exemplos reais que possuirão a mesma simplicidade e resultados do nosso programa ``segull``. Você também não precisa ser um matemático, isto será apenas como usar um *framework* ou uma *api*.
+Então não se desespere, iremos por partes em teoria das categorias, teoria dos conjuntos e cálculo lambda para programar exemplos reais que possuirão a mesma simplicidade e resultados do nosso programa ``segull``. Você também não precisa ser um matemático, isto será apenas como usar um *framework* ou uma *api*.
 
 
-Pode ser uma supresa para você, ouvir que podemos escrever no nosso dia-a-dia, programas completos usando a abordagem funcional proposta acima. Programas com uma excelente performance, concisos, elegantes e ainda sim fáceis de entender. Programas que não reinventam a roda todo momento. Se você é um criminoso, a lei não é uma coisa boa, mas neste livro, vamos querer reconhecer e obedecer as leis da matemática.
+Pode ser uma supresa para você ouvir que podemos escrever no nosso dia-a-dia, programas completos usando a abordagem funcional proposta acima. Programas com uma excelente performance, concisos, elegantes e ainda sim fáceis de entender. Programas que não reinventam a roda todo momento. Se você é um criminoso, a lei não é uma coisa boa, mas neste livro, vamos querer reconhecer e obedecer as leis da matemática.
 
 Queremos usar a teoria como um quebra-cabeça onde cada peça se encaixa perfeitamente. Queremos representar problemas específicos de modo genérico, componentizado e então explorar suas propriedades a nosso favor. Isso requer mais disciplina do que o "Bora programar!" da abordagem da programação imperativa[ Mais tarde falaremos a definição precisa do que é programação imperativa, mas de antemão é absolutamente qualquer coisa diferente de programação funcional], mas o benefício de trabalhar com princípios matemáticos na abordagem funcional vai te deixar de queixo caído.
 
