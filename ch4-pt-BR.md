@@ -2,7 +2,7 @@
 
 ## Não vivo se viver é sem você
 
-Uma vez meu pai me explicou que há certas coisas que você vive sem, até um dia tê-las. Forno de microondas e Smart Phones por exemplo. Algumas pessoas mais velhas lembram de viver uma vida plena sem internet. Para mim, currying é mais um exemplo.
+Uma vez meu pai me explicou que há certas coisas que você vive sem, até um dia tê-las. Forno de microondas e smartphones por exemplo. Algumas pessoas mais velhas lembram de viver uma vida plena sem internet. Para mim, currying é mais um exemplo.
 
 O conceito é simples: Você pode chamar uma função com menos argumentos do que o esperado. E o que será retornado, é uma função que leva os argumentos restantes.
 
@@ -103,7 +103,7 @@ var getChildren = function(x) {
 var allTheChildren = map(getChildren);
 ```
 
-Funções chamadas com menos argumentos que a mesma espera, é tipicamente chamada de *partial application*(aplicação parcial). Usando essa técnica eliminamos um monte de código desnecessário. Note que a função `allTheChildren` se parece com a função da biblioteca lodash[^note que os argumentos estão em ordem diferente].
+Funções chamadas com menos argumentos do que o esperado, é tipicamente chamada de *partial application*(aplicação parcial). Usando essa técnica, eliminamos um monte de código desnecessário. Note que a função `allTheChildren` se parece com a função da biblioteca lodash[^note que os argumentos estão em ordem diferente].
 
 ```js
 var allTheChildren = function(elements) {

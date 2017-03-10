@@ -102,7 +102,7 @@ Não existe respostas certas ou erradas - estamos apenas encaixando nossas peça
 
 ## Pointfree
 
-Estilo `Pointfree` significa nunca ter que mencionar seus dados. Desculpe, vou explicar melhor. Significa que são funções que nunca mencionam os dados em que estão operando. Funções de primeira classe, currying, composição, todas elas jogam juntas para criar esse estilo.
+Estilo `Pointfree` significa nunca ter que mencionar seus dados. Desculpe, vou explicar melhor. Significa que são funções que nunca mencionam os dados em que estão operando. Funções de primeira classe, currying, composição, todas elas trabalham juntas para criar esse estilo.
 
 ```js
 // não é pointfree porque menciona os dados: word
@@ -132,7 +132,7 @@ initials("hunter stockton thompson");
 ```
 
 Códigos em Pointfree podem novamente nos ajudar a remover nomes desnecessários e deixar nosso código consiso e genérico.
-Pointfree é um bom exemplo de como testar se nosso código funcional está composto de pequenas funções que recebem uma entrada para uma saída. Não é possível compor um while loop, por exemplo. Mas cuidado, no entanto, pointfree é uma espada de dois gumes que pode as vezes não deixar clara sua real intenção. Nem todos códigos funcionais são pointfree e isso esta O.K. Vamos usá-las quando pudermos, e de outra forma, ficaremos com funções normais.
+Pointfree é um bom exemplo de como testar se nosso código funcional está composto de pequenas funções que recebem uma entrada para uma saída. Não é possível compor um while loop, por exemplo. Mas cuidado, no entanto, pointfree é uma espada de dois gumes que pode as vezes não deixar clara sua real intenção. Nem todos códigos funcionais são pointfree e isso esta O.K. Vamos usá-las quando pudermos, quando não der, ficaremos com funções normais.
 
 ## Debugando
 Um erro comum é compor algo como `map`, uma função de dois argumentos, sem primeiro aplicá-la parcialmente.
@@ -186,9 +186,9 @@ A função `trace` nos permite visualizar o dado em um determinado ponto para fi
 
 Composição será nossa ferramenta para contruirmos programas, e por sorte, possui por trás uma forte teoria que nos garante que tudo irá funcionar. Vamos examinar essa teoria.
 
-## Teoria Categórica
+## Teoria das Categorias
 
-Teoria Categórica é uma ramificação da matemática abstrada que pode formalizar conceitos de várias outras ramificações diferentes tais como a teoria dos conjuntos, teoria dos tipos, teoria dos grupos, lógica e muito mais. Ele lida primeiramente com objetos, morfismo e transformações, que muito se  asemelham a programação. Aqui temos um gráfico com os conceitos vistos separados por categoria.
+Teoria das Categorias é uma ramificação da matemática abstrada que pode formalizar conceitos de várias outras ramificações diferentes tais como a teoria dos conjuntos, teoria dos tipos, teoria dos grupos, lógica e muito mais. Ele lida primeiramente com objetos, morfismo e transformações, que muito se asemelham a programação. Aqui temos um gráfico com os conceitos vistos separados por categoria.
 
 <img src="images/cat_theory.png" />
 
@@ -201,7 +201,7 @@ Em teoria categórica, temos algo chamado... uma categoria. A mesma é definida 
   * Uma noção de composição nos morfismos
   * Um morfismo distinto chamado identidade
 
-Teoria categórica é abstrata suficiente para modelar muitas coisas, mas vamos aplicar isso para tipos e funções, pois é o que nos preocupa no momento.
+Teoria das categorias é abstrata suficiente para modelar muitas coisas, mas vamos aplicar isso para tipos e funções, pois é o que nos preocupa no momento.
 
 **Uma coleção de objetos**
 Os objetos serão tipos de dados. No caso, ``String``, ``Boolean``, ``Number``, ``Object``, e etc. Geralmente vemos tipos de dados como um conjunto de todos valores possíveis. Podemos dar uma olhada no ``Boolean`` como um conjunto de `[true, false]` e ``Number`` como um conjunto de todos os valores numéricos possíveis. Tratando tipos como conjuntos é útil, porque podemos usar teoria dos conjuntos para trabalhar com eles.
@@ -210,7 +210,7 @@ Os objetos serão tipos de dados. No caso, ``String``, ``Boolean``, ``Number``, 
 Morfismo serão nossas funções puras padrão de cada dia.
 
 **Uma noção de composição nos morfismos**
-Esse, como você deve ter imaginado, é nosso novo brinquedo - `compose`. Discutimos que nossa função `compose` é associativa o que não é uma coincidência, pois é uma propriedade que deve manter qualquer composição em teoria categórica.
+Esse, como você deve ter imaginado, é nosso novo brinquedo - `compose`. Discutimos que nossa função `compose` é associativa o que não é uma coincidência, pois é uma propriedade que deve manter qualquer composição na teoria das categorias.
 
 Aqui temos uma imagem demostrando a composição:
 
@@ -251,7 +251,7 @@ O que são as outras categorias ? Bom, nós podemos definir um grafo direcionado
 ## Em Resumo
 Composição conecta nossas funções como se fossem vários tubos. Os dados fluirão através de nossa aplicação de forma adequada - funções puras são funções de uma entrada para uma saída, e quebrando essa cadeia, você estaria negligenciando a saída, tornando nosso programa inútil.
 
-Nós adotamos a composição como um `design principle` acima de todos os outros. E o motivo é porque ele deixa nosso app simples e sensato. Teoria categórica terá um papel muito importante na arquitetura do app, modelando os efeitos colaterais e garantindo a precisão do programa.
+Nós adotamos a composição como um `design principle` acima de todos os outros. E o motivo é porque ele deixa nosso app simples e sensato. Teoria das categorias terá um papel muito importante na arquitetura do app, modelando os efeitos colaterais e garantindo a precisão do programa.
 
 Estamos agora no ponto onde podemos ver bem alguns exemplos práticos. Vamos criar um exemplo de aplicação.
 

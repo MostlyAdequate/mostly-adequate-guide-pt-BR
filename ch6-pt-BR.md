@@ -2,7 +2,7 @@
 
 ## Código Declarativo
 
-Vamos mudar nossa metalidade. A partir de agora, vamos parar de dizer ao computador como fazer seu trabalho, ao invéz disso vamos escrever uma especificação do que queremos como resultado. Tenho certeza que achará muito menos estressante do que ficar tentando gerenciar tudo a todo tempo.
+Vamos mudar nossa mentalidade. A partir de agora, vamos parar de dizer ao computador como fazer seu trabalho, ao invéz disso vamos escrever uma especificação do que queremos como resultado. Tenho certeza que achará muito menos estressante do que ficar tentando gerenciar tudo a todo tempo.
 
 Declarativo, ao contrário de imperativo, o que significa que iremos escrever expressões, ao contrário de instruções passo a passo.
 
@@ -108,7 +108,7 @@ var Impure = {
 };
 ```
 
-Aqui nós apenas encapsulamos o métodos jQuery para ficarem `curried` e trocamos os argumentos para um posição favorável. Demos um namespace de `Impure` para que saibamos que são funções pegigosas. Em um próximo exemplo, vamos torná-los funções puras.
+Aqui nós apenas encapsulamos o métodos jQuery para ficarem `curried` e trocamos os argumentos para um posição favorável. Demos um namespace de `Impure` para que saibamos que são funções perigosas. Em um próximo exemplo, vamos torná-los funções puras.
 
 Agora temos que construir uma url para passar para nossa função `Impure.getJSON`.
 
@@ -135,9 +135,9 @@ Isso chama nossa função `url`, então passa a string para nossa função `getJ
 
 Gostaríamos de construir nossas imagens fora deste json. Pois as srcs estão dentro de `items` e dentro de cada item dentro de `media` com a propriedade `m`.
 
-de qualquer forma, para pegar essas propriedades aninhadas nós podemos usar uma função bacana da **ramda** chamada `_.prop()`. Segue uma versão para que você possa ver o que está acontecendo:
+De qualquer forma, para pegar essas propriedades aninhadas, nós podemos usar uma função bacana da **ramda** chamada `_.prop()`. Segue uma versão para que você possa ver o que está acontecendo:
 
-( Here's a homegrown version so you can see what's happening )
+( Aqui é uma versão caseira, só para você ver como funciona )
 
 ```js
 var prop = _.curry(function(property, object){
@@ -163,7 +163,7 @@ var app = _.compose(Impure.getJSON(renderImages), url);
 Tudo que fizemos foi criar um nova composição que irá chamar nossas `srcs` e colocá-las no corpo do html. Substituimos `trace` por `renderImages` agora que temos algo para renderizar além do json crú.
 Isso irá grosseiramente mostrar nossos `srcs` diretamente no body.
 
-Nosso último passo é mudar essas srcs em genuínas images. Numa aplicação grande, temos que usar alguma biblioteca template/dom como Handlebars ou React. Porém para essa aplicação, vamos apenas precisamos uma tag img, então vamos colocá-las usando jQuery.
+Nosso último passo é mudar essas srcs em genuínas images. Numa aplicação grande, temos que usar alguma biblioteca template/dom como Handlebars ou React. Porém para essa aplicação, apenas precisamos uma tag img, então vamos colocá-las usando jQuery.
 
 ```js
 var img = function (url) {
@@ -280,7 +280,7 @@ var mediaUrl = _.compose(_.prop('m'), _.prop('media'));
 var images = _.compose(_.map(_.compose(img, mediaUrl)), _.prop('items'));
 ```
 
-Agora o teremos um loop apenas transformando cada item dentro de img. Vamos apenas fazer isso um pouco mais legícel tirando função pra fora.
+Agora o teremos um loop apenas transformando cada item dentro de img. Vamos apenas fazer isso um pouco mais legível tirando a função pra fora.
 
 ```js
 var mediaUrl = _.compose(_.prop('m'), _.prop('media'));
