@@ -2,7 +2,7 @@
 
 ## Qual o seu tipo?
 
-Se você é novo no mundo da programação funcional, não irá demorar para você estar totalmente envolvido em **type signatures** (tipos de assinatura). Types são uma meta-linguagem que permite que pessoas de origens distintas se comuniquem de forma rápida e efeciente. Em sua maioria, elas são escritas com um sistema chamado "Hindley-Milner", na qual examinaremos juntos neste capítulo.
+Se você é novo no mundo da programação funcional, não irá demorar para você estar totalmente envolvido em **type signatures** (tipos de assinatura). Types são uma meta-linguagem que permite que pessoas de origens distintas se comuniquem de forma rápida e eficiente. Em sua maioria, elas são escritas com um sistema chamado "Hindley-Milner", na qual examinaremos juntos neste capítulo.
 
 Ao trabalhar com funções puras, type signatures possuem um poder expressivo muito maior do que qualquer outro idioma. Essas signatures cochicham no seu ouvido os segredos íntimos de uma função. Em uma única e compacta linha, elas expoem qual seu comportamento e intenção. Delas podemos deduzir teoremas. Types podem ser deduzidas, portanto não necessitando anotações explicitas. Elas podem ser ajustadas para uma forma precisa ou geral e abstrata. Elas não são apenas úteis para verificações em tempo de execução, mas faz com que seja a melhor forma de documentação disponível. Type signatures faz um papel importante na programação funcional - muito mais do que você imagina.
 

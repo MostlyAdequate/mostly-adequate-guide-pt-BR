@@ -1,4 +1,4 @@
-# Capítulo 1: O que estamos fazendo ?
+# Capítulo 1: O que estamos fazendo?
 
 ## Introdução
 
@@ -46,7 +46,7 @@ var result = flock_a.conjoin(flock_c)
 //=> 32
 ```
 
-Quem neste mundo poderia criar uma abominação dessa ? É extremamente difícil controlar o estado interno mutável. E, meu Deus, além disso a resposta está errada! Deveria ser `16`, mas a `flock_a` acabou sendo alterada permanentemente no processo. Pobrezinha `flock_a`. Esta é a anarquia na I.T.! Isto sim é uma aritmética selvagem!
+Quem neste mundo poderia criar uma abominação dessa? É extremamente difícil controlar o estado interno mutável. E, meu Deus, além disso a resposta está errada! Deveria ser `16`, mas a `flock_a` acabou sendo alterada permanentemente no processo. Pobrezinha `flock_a`. Esta é a anarquia na I.T.! Isto sim é uma aritmética selvagem!
 
 Se você não entende este programa, tudo bem, eu também não! O ponto é que *estado* e *valores mutáveis* são difíceis de serem acompanhados mesmo em pequenos exemplos.
 

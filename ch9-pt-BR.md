@@ -260,7 +260,7 @@ Vale lembrar, isso não lida com dois diferentes tipos aninhados. Functor compos
 
 O estilo de programação em Containers pode ser confusos nos primeiro momento. As vezes ficamos confusos para saber quantos containers nosso valor está, e se usamos `map` ou `chain` (logo veremos outros métodos de containers). Podemos fortemente melhorar nosso debug com alguns truques como o de implementar `inspec`, e aprenderemos como criar uma "stack" que pode lidar com qualquer efeito lançado na mesma, mas existem situações que iremos questionar se vale a pena o esforço.
 
-Gostatia de levantar a espada monadic de fogo por um momento, para demostrar o poder de programar desta forma.
+Gostaria de levantar a espada monadic de fogo por um momento, para demostrar o poder de programar desta forma.
 
 Vamos ler um arquivo, e em seguida fazer upload diretamente:
 
