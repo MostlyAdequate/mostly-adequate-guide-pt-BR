@@ -16,7 +16,7 @@ var greeting = function(name) {
 };
 ```
 
-Aqui a função `hi` atribuida na função `greeting` é completamente redundante. E porquê ? Em Javascript funções são *callable*, o que significa que podem ser invocadas ou não. Quando a `hi` está com `()` no final, ela vai ser chamada e retornar um valor. Caso contrário, simplesmente retorna a função que foi atribuída a ela.
+Aqui a função `hi` atribuida na função `greeting` é completamente redundante. E porquê? Em Javascript funções são *callable*, o que significa que podem ser invocadas ou não. Quando a `hi` está com `()` no final, ela vai ser chamada e retornar um valor. Caso contrário, simplesmente retorna a função que foi atribuída a ela.
 Só para termos certeza, vamos dar uma olhadinha de novo.
 
 ```js

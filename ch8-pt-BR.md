@@ -98,7 +98,7 @@ Espere um pouco, e se continuarmos a chamar `map`, isso parece ser um tipo de co
 
 > Um Functor é um tipo que implementa `map` e obedece algumas leis
 
-Sim, *Functor* é uma simples interface com um contrato. Poderíamos simplesmente chamá-lo de *Mappable*, mas onde está a diversão nisso ?
+Sim, *Functor* é uma simples interface com um contrato. Poderíamos simplesmente chamá-lo de *Mappable*, mas onde está a diversão nisso?
 
 Functors vem da teoria das categorias e veremos a matemática em detalhes no final do capítulo, mas agora, vamos trabalhar na intuição e uso prático desta interface bizarramente nomeada.
 
@@ -204,13 +204,13 @@ getTwenty({ balance: 10.00});
 // Maybe(null)
 ```
 
-`withdraw` irá torcer o nariz para nós e retornar `Maibe(null)` se o dinheiro não for suficiente. Essa função também comunica sua inconstância e nos deixa sem escolha de continuar o `map`. A direfença é que `null` foi intencional aqui. Em vez de um `Maybe(String)`, nós recebemos um `Maybe(null)` como sinal de falha, e nossa aplicação efetivamente interrompe seu trajeto. É importante notar: se o `withdraw` falhar, então `map` irá cortar o resto do nosso cálculo uma vez que não irá mais executar a função passada, no caso a `finishTransaction`. Este é exatamente o comportamento que queremos, de não alterar nosso registro ou mostrar o novo balanço da conta.
+`withdraw` irá torcer o nariz para nós e retornar `Maibe(null)` se o dinheiro não for suficiente. Essa função também comunica sua inconstância e nos deixa sem escolha de continuar o `map`. A diferença é que `null` foi intencional aqui. Em vez de um `Maybe(String)`, nós recebemos um `Maybe(null)` como sinal de falha, e nossa aplicação efetivamente interrompe seu trajeto. É importante notar: se o `withdraw` falhar, então `map` irá cortar o resto do nosso cálculo uma vez que não irá mais executar a função passada, no caso a `finishTransaction`. Este é exatamente o comportamento que queremos, de não alterar nosso registro ou mostrar o novo balanço da conta.
 
 ## Liberando o Valor
 
 Um coisa que as pessoas geralmente esquecem, é que sempre haverá um final da linha; alguma função que envia um JSON, imprime na tela, altera nosso filesystem ou qualquer outra coisa. Não podemos entregar uma saída com `return`, devemos executar alguma função ou outra para enviar para o mundo exterior. Podemos nos expressar como no koan Zen Budista: "Se um programa não possui nenhum efeito observável, ele de fato executa?". Ele executa corretamente para sua própria satisfação? Suspeito que meramente executa alguns ciclos e depois volta a dormir...
 
-O trabalho de nossa aplicação é de recuperar, transformar e carregar dados até a hora de dizer adeus, e a função que faz isso pode ser mapeada, assim o valor não precisa deixar o aconchego do seu container. De fato, um erro comum é tentar remover o valor de `Maybe` de uma forma ou de outra, como se o possível valor de dentro dela de repente se materializasse e tudo ficaria bem. Temos que endenter que isso pode ser uma parte de código onde nosso valor não foi feito para esse fim. Nosso código parece mais com o gato de Schrödinger, ou seja, dois estados ao mesmo tempo, e deve manter esse fato até o final da função. Isso faz com que nosso código fique em um fluxo linear independente da lógica aplicada.
+O trabalho de nossa aplicação é de recuperar, transformar e carregar dados até a hora de dizer adeus, e a função que faz isso pode ser mapeada, assim o valor não precisa deixar o aconchego do seu container. De fato, um erro comum é tentar remover o valor de `Maybe` de uma forma ou de outra, como se o possível valor de dentro dela de repente se materializasse e tudo ficaria bem. Temos que entender que isso pode ser uma parte de código onde nosso valor não foi feito para esse fim. Nosso código parece mais com o gato de Schrödinger, ou seja, dois estados ao mesmo tempo, e deve manter esse fato até o final da função. Isso faz com que nosso código fique em um fluxo linear independente da lógica aplicada.
 
 Existe uma alternativa. Se prefere retornar um valor customizado e continuar, podemos usar um pequeno helper chamado `maybe`.
 
@@ -329,7 +329,7 @@ zoltar({birthdate: 'balloons!'});
 
 Quando `birthdate` é válido, o programa mostra na tela o seu maior segredo (sua idade). Senão mostrará o `Left` com uma mensagem de erro clara como a luz do dia, mas ainda dentro do seu container. Então nos mostra um erro, mas de uma forma calma e educada, diferente de uma criança que perde o controle quando as coisas dão errado pra ela.
 
-Neste exemplo, estamos logicamente dividindo nosso fluxo de controle dependendo da validade da data de nascimento, e ainda sim estamos nos movendo de forma linear da direita para esquerda, e não escalando através das chaves de instruções condicionais. Normalmente movemos o `console.log` para fora da função `zoltar` a damos `map` no momento da chamada, e isso é útil para ver como a parte `Right` se difere. Nós usamos `_` no tipo de assinatura direita para indicar que há um valor que deve ser ignorado[Em alguns navegadores você terá que usar `console.log.bin(console)` para usá-lo como sendo de primeira classe].
+Neste exemplo, estamos logicamente dividindo nosso fluxo de controle dependendo da validade da data de nascimento, e ainda sim estamos nos movendo de forma linear da direita para esquerda, e não escalando através das chaves de instruções condicionais. Normalmente movemos o `console.log` para fora da função `zoltar` a damos `map` no momento da chamada, e isso é útil para ver como a parte `Right` se difere. Nós usamos `_` no tipo de assinatura direita para indicar que há um valor que deve ser ignorado[Em alguns navegadores você terá que usar `console.log.bind(console)` para usá-lo como sendo de primeira classe].
 
 Gostaria de usar essa oportunidades para apontar algo que pode ser que você tenha perdido: `fortune` apesar de usar `Either` neste exemplo, não tem conhecimento sobre a presença de algum functor. Esse é o caso com `finishTransaction` no exemplo anterior. Quando chamada, uma função pode ser envolvida por `map` e transforma uma função não functor, em um functor. E esse processo é chamado de *lifting*. Funções tendem a trabalhar melhor com tipos normais de dados em vez de tipos container, portanto quando preciso, é feito o *lifting* dentro de um container adequado. Isso trás simplicidade e torna as funções mais reusáveis podendo serem alteradas para trabalhar com qualquer tipo de functor sobre demanda.
 
@@ -427,7 +427,7 @@ Aqui `io_window` é um real `IO` que podemos usar `map` diretamente, onde `$` é
 
 Tire um tempo para canalizar sua intuição functor. Se vermos a fundo os detalhes da implementação, nos sentiremos em casa mapeando qualquer tipo de container independente de sua pecualiriedade. Temos as leis do functor das quais iremos explorar no final do capítulo, para agradecer por esse super poder psíquico. De qualquer forma, finalmente podemos trabalhar com valores impuros sem sacrificar nossa preciosa pureza.
 
-Agora, prendemos a besta numa jaula, mas teremos que deixá-la livre em alguns pontos. Quando nosso `IO` é mapeado, são criadas várias operações inpuras onde executá-las é realmente uma perturbação da paz. Então quando é o momento certo de soltá-las ? É mesmo possível executar nosso `IO` a ainda sim entrar de vestido branco no casamento? A resposta é sim, se colocarmos o ônus na chamada do código. Nosso código puro, apesar da trama nefasta e das intrigas, se mantém inocente e é o que chama e fica com toda responsabilidade de executar os efeitos. Vamos ver um exemplo para tornar isso concreto.
+Agora, prendemos a besta numa jaula, mas teremos que deixá-la livre em alguns pontos. Quando nosso `IO` é mapeado, são criadas várias operações impuras onde executá-las é realmente uma perturbação da paz. Então quando é o momento certo de soltá-las? É mesmo possível executar nosso `IO` a ainda sim entrar de vestido branco no casamento? A resposta é sim, se colocarmos o ônus na chamada do código. Nosso código puro, apesar da trama nefasta e das intrigas, se mantém inocente e é o que chama e fica com toda responsabilidade de executar os efeitos. Vamos ver um exemplo para tornar isso concreto.
 
 ```js
 
@@ -471,7 +471,7 @@ IO.prototype.map = function(f) {
 Bem melhor. Agora nosso código de chamada fica sendo `findParam("searchTerm").unsafePerformIO()`, que fica claro como o dia
 para nossos usuários(e leitores) da aplicação.
 
-`IO` será um fiél companheiro, nos ajudando a domar essas selvagens e inpuras ações. A seguir, iremos ver um tipo similar em espírito, mas que é usado de uma forma extremamente diferente.
+`IO` será um fiél companheiro, nos ajudando a domar essas selvagens e impuras ações. A seguir, iremos ver um tipo similar em espírito, mas que é usado de uma forma extremamente diferente.
 
 ## Tarefas Assíncronas
 
@@ -519,7 +519,7 @@ Task.of(3).map(function(three){ return three + 1 });
 
 A função que estou chamando `reject` e `result`, são nossos callbacks de error e success nesta ordem. Como pode ver, simplesmente damos um `map` em `Task` para trabalhar com valores futuros como se eles já estivessem disponíveis. By now `map` should be old hat.
 
-Se você está acostumado com promises, já entendeu que a função `map` é o `then` em `Task`, fazendo o papel de nossa promise. Não se preocupe se você não conhece promises, não iremos usá-las em nenhum lugar porque elas são inpuras, mas a analogia é válida.
+Se você está acostumado com promises, já entendeu que a função `map` é o `then` em `Task`, fazendo o papel de nossa promise. Não se preocupe se você não conhece promises, não iremos usá-las em nenhum lugar porque elas são impuras, mas a analogia é válida.
 
 Como `IO`, `Task` irá pacientemente esperar para executar, até que nós demos a luz verde. De fato, devido `Task` esperar por nosso comando, `IO` é efetivamente envolvido por `Task` para todas coisas assíncronas; `readFile` e `getJSON` não necessitam de um container `IO` a mais para serem puros. Além do mais, `Task` trabalha de forma similar quando usamos `map` sobre ela: Estamos colocando instruções para serem executadas no futuro como uma lista de tarefas em uma máquina do tempo - uma sofisticada forma tecnológica de procrastinação.
 
