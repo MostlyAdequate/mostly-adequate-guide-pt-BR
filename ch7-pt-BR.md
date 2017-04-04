@@ -6,7 +6,7 @@ Se você é novo no mundo da programação funcional, não irá demorar para voc
 
 Ao trabalhar com funções puras, type signatures possuem um poder expressivo muito maior do que qualquer outro idioma. Essas signatures cochicham no seu ouvido os segredos íntimos de uma função. Em uma única e compacta linha, elas expoem qual seu comportamento e intenção. Delas podemos deduzir teoremas. Types podem ser deduzidas, portanto não necessitando anotações explicitas. Elas podem ser ajustadas para uma forma precisa ou geral e abstrata. Elas não são apenas úteis para verificações em tempo de execução, mas faz com que seja a melhor forma de documentação disponível. Type signatures faz um papel importante na programação funcional - muito mais do que você imagina.
 
-JavaScript é uma linguagem dinâmica, mas não significa que evitamos types completamente. Ainda trabalhamos com strings, numbers, booleans e assim por diante. Portanto não há nenhuma integração na linguagem, apenas guarde isso em mente. Não se preocupe, já que que estamos usando assinaturas para documentação, podemos usar comentários para o que precisamos.
+JavaScript é uma linguagem dinâmica, mas não significa que evitamos types completamente. Ainda trabalhamos com strings, numbers, booleans e assim por diante. Portanto não há nenhuma integração na linguagem, apenas guarde isso em mente. Não se preocupe, já que estamos usando assinaturas para documentação, podemos usar comentários para o que precisamos.
 
 Existem verificadores de tipos disponíveis para Javascript como [Flow](http://flowtype.org/) ou dialetos tipados como [TypeScript](http://www.typescriptlang.org/). O objetivo desse livro é equipá-lo com ferramentas para escrever código funcional, portanto iremos ficar com o sistema de tipos padrão usado nas linguagens funcionais.
 
@@ -25,9 +25,9 @@ capitalize("smurf");
 //=> "Smurf"
 ```
 
-Aqui `capitalize` recebe uma `String` e retorna outra `String`. Não importa a implementação, é a type signature que estamos interessados.
+Aqui `capitalize` recebe uma `String` e retorna outra `String`. Não importa a implementação, é na type signature que estamos interessados.
 
-Em Hindley-Milner, funções são escritas como `a -> b` onde `a` e `b` são variáveis de qualquer tipo. Então a assinatura de `capitalize` pode ser lida como "uma função de `String` para `String`". E outras palavras, ela recebe `String` como entrada e retorna uma `String` como saída.
+Em Hindley-Milner, funções são escritas como `a -> b` onde `a` e `b` são variáveis de qualquer tipo. Então a assinatura de `capitalize` pode ser lida como "uma função de `String` para `String`". Em outras palavras, ela recebe uma `String` como entrada e retorna uma `String` como saída.
 
 Vamos ver mais algumas assinaturas de funções:
 
@@ -84,7 +84,7 @@ var replace = curry(function(reg, sub, s){
 });
 ```
 
-Como você pode ver todos esse parênteses em `replace`, a notação extra pode se tornar um pouco sujo e redundânte, portanto simplesmente omitimos eles. Podemos informar os argumentos de uma só vez, se optar por isso, é mais fácil pensar nele como: `replace` recebe um `Regex`, uma `String`, outra `String` e retorna uma `String`.
+Como você pode ver todos esse parênteses em `replace`, a notação extra pode se tornar um pouco suja e redundante, portanto simplesmente omitimos elas. Podemos informar os argumentos de uma só vez, se optar por isso, é mais fácil pensar nele como: `replace` recebe um `Regex`, uma `String`, outra `String` e retorna uma `String`.
 
 Uma última coisinha aqui:
 
@@ -105,7 +105,7 @@ A função `id` recebe qualquer coisa do tipo `a` e retorna alguma coisa do mesm
 
 Felizmente, você foi surpreendido pela beleza expressiva de type signature. Isso literamente nos conta o que a função faz quase que palavra por palavra. Dada uma função de `a` para `b`, um array de `a`, e isso nos retorna um array de `b`. A única coisa que ela deve fazer é chamar a função para cada `a`. Qualquer outra coisa fora disso é incompatível.
 
-Ser capaz de raciocinar sobre types a suas implicações, é uma habilidade que o fará ir mais longe no mundo funcional. Não só os papéis, blogs, documentos e etc se tornam mais digerível, mas a assinatura em sí praticamente lhe dará toda funcionalidade implementada. É preciso prátics para se tornar um leitor fluente de assinaturas, mas se persistir nisso, um mundo de informação estará disponível para você.
+Ser capaz de raciocinar sobre types a suas implicações, é uma habilidade que o fará ir mais longe no mundo funcional. Não só os papéis, blogs, documentos e etc se tornam mais digerível, mas a assinatura em sí praticamente lhe dará toda funcionalidade implementada. É preciso prática para se tornar um leitor fluente de assinaturas, mas se persistir nisso, um mundo de informação estará disponível para você.
 
 Aqui mais alguns exemplos para ver se você consegue sozinho decifrá-las.
 
