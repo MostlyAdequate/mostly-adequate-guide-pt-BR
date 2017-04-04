@@ -45,7 +45,7 @@ var authenticate = compose(logIn, toUser);
 
 Embora não haja necessariamente nada de errado com a versão imperativa, mas ainda existe uma avaliação de código passo a passo fritando nela. A expressão `compose` simplesmente declara um fato: A Autenticação é composição de `toUser` e `logIn`. Mais um vez, isso nós dá um espaço livre para suporte em alterações de código o que faz com que o código de nossa aplicação se torne uma especificação de alto nível.
 
-Por não estarmos codificando em ordem de avaliação, o código declarativo presta-se para a computação paralela. Isso combinado com funções puras é o porque FP é uma boa opção para o futuro paralelo - não precisamos fazer nada de especial para alcançar sistemas paralos/concorrentes.
+Por não estarmos codificando em ordem de avaliação, o código declarativo presta-se para a computação paralela. Isso combinado com funções puras é o porque FP é uma boa opção para o futuro paralelo - não precisamos fazer nada de especial para alcançar sistemas paralelos/concorrentes.
 
 ## Um flickr em programação funcional
 
@@ -84,7 +84,7 @@ require([
     // app goes here
   });
 ```
-Vamos usar [ramda](http://ramdajs.com) e vez de lodash ou qualquer outra biblioteca. Ramda inclui `compose`, `curry` e muito mais. Tenho usado requirejs, o que pode parecer um exagero, mas iremos usá-lo por todo livro e consistência é a chave. Também, já começei criando nossa função bacana `trace` para uma fácil depuração (debug).
+Vamos usar [ramda](http://ramdajs.com) e vez de lodash ou qualquer outra biblioteca. Ramda inclui `compose`, `curry` e muito mais. Tenho usado requirejs, o que pode parecer um exagero, mas iremos usá-lo por todo livro, e consistência é a chave. Também, já começei criando nossa função bacana `trace` para uma fácil depuração (debug).
 
 Agora que isso está fora de nosso caminho, vamos para as especificações. Nosso app irá fazer 4 coisas.
 
@@ -135,7 +135,7 @@ Isso chama nossa função `url`, então passa a string para nossa função `getJ
 
 Gostaríamos de construir nossas imagens fora deste json. Pois as srcs estão dentro de `items` e dentro de cada item dentro de `media` com a propriedade `m`.
 
-De qualquer forma, para pegar essas propriedades aninhadas, nós podemos usar uma função bacana da **ramda** chamada `_.prop()`. Segue uma versão para que você possa ver o que está acontecendo:
+De qualquer forma, para pegar essas propriedades aninhadas, nós podemos usar uma função da **ramda** chamada `_.prop()`. Segue uma versão para que você possa ver o que está acontecendo:
 
 ( Aqui é uma versão caseira, só para você ver como funciona )
 
@@ -153,17 +153,17 @@ var mediaUrl = _.compose(_.prop('m'), _.prop('media'));
 var srcs = _.compose(_.map(mediaUrl), _.prop('items'));
 ```
 
-Uma vez pego os `items`, devemos usar o `map` neles para extrair cada media url. Isso resulta em um array bacana de srcs. Vamos colocar em nosso app e imprimir eles na tela.
+Uma vez pego os `items`, devemos usar o `map` neles para extrair cada media url. Isso resulta em um array de srcs. Vamos colocar em nosso app e imprimir eles na tela.
 
 ```js
 var renderImages = _.compose(Impure.setHtml("body"), srcs);
 var app = _.compose(Impure.getJSON(renderImages), url);
 ```
 
-Tudo que fizemos foi criar um nova composição que irá chamar nossas `srcs` e colocá-las no corpo do html. Substituimos `trace` por `renderImages` agora que temos algo para renderizar além do json crú.
+Tudo que fizemos foi criar um nova composição que irá chamar nossas `srcs` e colocá-las no corpo do html. Substituimos `trace` por `renderImages` agora que temos algo para renderizar e não apenas o json.
 Isso irá grosseiramente mostrar nossos `srcs` diretamente no body.
 
-Nosso último passo é mudar essas srcs em genuínas images. Numa aplicação grande, temos que usar alguma biblioteca template/dom como Handlebars ou React. Porém para essa aplicação, apenas precisamos uma tag img, então vamos colocá-las usando jQuery.
+Nosso último passo é mudar essas srcs em genuínas imagens. Numa aplicação grande, temos que usar alguma biblioteca template/dom como Handlebars ou React. Porém para essa aplicação, apenas precisamos uma tag img, então vamos colocá-las usando jQuery.
 
 ```js
 var img = function (url) {
@@ -280,7 +280,7 @@ var mediaUrl = _.compose(_.prop('m'), _.prop('media'));
 var images = _.compose(_.map(_.compose(img, mediaUrl)), _.prop('items'));
 ```
 
-Agora o teremos um loop apenas transformando cada item dentro de img. Vamos apenas fazer isso um pouco mais legível tirando a função pra fora.
+Agora o teremos um loop apenas transformando cada item dentro de img. Vamos apenas tornar isso um pouco mais legível tirando a função pra fora.
 
 ```js
 var mediaUrl = _.compose(_.prop('m'), _.prop('media'));
