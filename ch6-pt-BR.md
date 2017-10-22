@@ -294,4 +294,4 @@ var images = _.compose(_.map(mediaToImg), _.prop('items'));
 
 Vimos como aplicar nossos conhecimentos em um pequeno, mas um app real. Usamos nossa estrutura matemática para pensar e refatorar nosso código. Mas em relação a tratamento de erros e ramificação de código? Como podemos tornar toda nossa aplicação pura em vez de aplicarmos algumas funções destrutivas a um namespace? Como podemos tornar nossa aplicação segura e mais expressiva? Essas são as questões que iremos abordar na parte 2.
 
-[Capítulo 7: Hindley-Milner e Eu](ch7-pt_BR.md)
+[Capítulo 7: Hindley-Milner e Eu](ch7-pt-BR.md)
