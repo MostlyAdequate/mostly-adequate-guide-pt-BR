@@ -256,7 +256,7 @@ Não se assuste se esses exemplos são um pouco difíceis de entender no primeir
 
 Vale lembrar, isso não lida com dois diferentes tipos aninhados. Functor composition e logo, monad transformers, podem nos ajudar nas seguintes situações:
 
-#Power trip
+## Power trip
 
 O estilo de programação em Containers pode ser confusos nos primeiro momento. As vezes ficamos confusos para saber quantos containers nosso valor está, e se usamos `map` ou `chain` (logo veremos outros métodos de containers). Podemos fortemente melhorar nosso debug com alguns truques como o de implementar `inspec`, e aprenderemos como criar uma "stack" que pode lidar com qualquer efeito lançado na mesma, mas existem situações que iremos questionar se vale a pena o esforço.
 
@@ -297,7 +297,7 @@ var upload = function(filename, callback) {
 
 Nossa, não é de fato uma aritmética dos infernos. Estamos nos batendo num labirinto volátil de loucura. Imagine isso sendo um típico app com variáveis mutáveis em todo momento! Estaríamos num poço de piche de fato.
 
-#Teoria
+## Teoria
 
 A primeira lei que veremos é a associativa, mas provavelmente não da forma que você está acostumados a ver.
 
