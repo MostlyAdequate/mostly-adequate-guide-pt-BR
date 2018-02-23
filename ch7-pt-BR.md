@@ -142,12 +142,12 @@ Você não precisa de nenhum código para entender os teoremas, eles seguem os t
 
 Você deve estar pensando, bom isso é por causa do senso comum. Mas pelo que sei, computadores não possuem um senso comum. Em vez disso, eles devem possuir uma forma padrão de automatização de código. A matemática tem uma maneira de formalizar o que é intuitivo, o que é útil no meio desse terreno rígido da lógica do computador.
 
-O teorema de `filter` é similar. Ele informa que compõe `f` e `p` para verificar oque deve ser filtrado, então aplica o `f` via `map` (lembre-se que filter, não irá transformar os elementos - sua assinatura obriga que `a` não seja alterado), isso sempre será equivalente a mapear nosso `f` então filtrar os resultado com o predicado `p`.
+O teorema de `filter` é similar. Ele informa que compõe `f` e `p` para verificar o que deve ser filtrado, então aplica o `f` via `map` (lembre-se que filter, não irá transformar os elementos - sua assinatura obriga que `a` não seja alterado), isso sempre será equivalente a mapear nosso `f` então filtrar os resultado com o predicado `p`.
 
 Esse são apenas dois exemplos, mas você pode aplicar esse raciocínio em qualquer assinatura do tipo polimórfico que sempre se aplicará. Em JavaScript, existem algumas ferramentas disponíveis para declarar regras de reescrita. O resultado é menos esforço e possibilidades infinitas.
 
 ## Em Resumo
 
-Types signatures Hindley-Milner são onipresentes no mundo funcional. Embora sejam simples de ler e escrever, leva tempo até dominar a técnica de entender programas apenas pela assinatura. A partir daqui iremos adicionar assinaturas em cada linha de código.
+Assinaturas (Type Signatures) Hindley-Milner são onipresentes no mundo funcional. Embora sejam simples de ler e escrever, leva tempo até dominar a técnica de entender programas apenas pela assinatura. A partir daqui iremos adicionar assinaturas em cada linha de código.
 
 [Capítulo 8: Tupperware](ch8-pt-BR.md)
