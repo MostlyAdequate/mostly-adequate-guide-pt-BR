@@ -17,9 +17,7 @@ Nas páginas empoeiradas dos livros de matemática, no vasto mar de páginas bra
 
 ```js
 //  capitalize :: String -> String
-var capitalize = function(s){
-  return toUpperCase(head(s)) + toLowerCase(tail(s));
-}
+const capitalize = s => toUpperCase(head(s)) + toLowerCase(tail(s));
 
 capitalize("smurf");
 //=> "Smurf"
@@ -33,24 +31,16 @@ Vamos ver mais algumas assinaturas de funções:
 
 ```js
 //  strLength :: String -> Number
-var strLength = function(s){
-  return s.length;
-}
+const strLength = s => s.length;
 
 //  join :: String -> [String] -> String
-var join = curry(function(what, xs){
-  return xs.join(what);
-});
+const join = curry((what, xs) => xs.join(what));
 
 //  match :: Regex -> String -> [String]
-var match = curry(function(reg, s){
-  return s.match(reg);
-});
+const match = curry((reg, s) => s.match(reg));
 
 //  replace :: Regex -> String -> String -> String
-var replace = curry(function(reg, sub, s){
-  return s.replace(reg, sub);
-});
+const replace = curry((reg, sub, s) => s.replace(reg, sub));
 ```
 
 `strLength` é a mesma idéia de antes: recebemos uma `String` e retorna um `Number`.
@@ -61,9 +51,7 @@ Para `match` ficamos livre para agrupar a assinatura assim:
 
 ```js
 //  match :: Regex -> (String -> [String])
-var match = curry(function(reg, s){
-  return s.match(reg);
-});
+const match = curry((reg, s) => s.match(reg));
 ```
 
 Agora sim, agrupando a última parte com parênteses nos revela mais informações. Agora parece que a função recebe um `Regex` e retorna uma função de `String` para `[String]`. Uma função currying é o caso aqui: damos um `Regex` e recebemos uma função de volta, esperando ser chamada com uma `String`. É claro, não temos que pensar desta forma, mas é bom entender porque aquele último tipo é retornado.
@@ -72,16 +60,14 @@ Agora sim, agrupando a última parte com parênteses nos revela mais informaçõ
 //  match :: Regex -> (String -> [String])
 
 //  onHoliday :: String -> [String]
-var onHoliday = match(/holiday/ig);
+const onHoliday = match(/holiday/ig);
 ```
 
 Cada argumento passado, retira um tipo fora da parte inicial da assinatura. `onHoliday` é `match` que já possui um `Regex`.
 
 ```js
 //  replace :: Regex -> (String -> (String -> String))
-var replace = curry(function(reg, sub, s){
-  return s.replace(reg, sub);
-});
+const replace = curry((reg, sub, s) => s.replace(reg, sub));
 ```
 
 Como você pode ver todos esse parênteses em `replace`, a notação extra pode se tornar um pouco suja e redundante, portanto simplesmente omitimos elas. Podemos informar os argumentos de uma só vez, se optar por isso, é mais fácil pensar nele como: `replace` recebe um `Regex`, uma `String`, outra `String` e retorna uma `String`.
@@ -90,12 +76,10 @@ Uma última coisinha aqui:
 
 ```js
 //  id :: a -> a
-var id = function(x){ return x; }
+const id = x => x;
 
 //  map :: (a -> b) -> [a] -> [b]
-var map = curry(function(f, xs){
-  return xs.map(f);
-});
+const map = curry((f, xs) => xs.map(f));
 ```
 
 A função `id` recebe qualquer coisa do tipo `a` e retorna alguma coisa do mesmo tipo `a`. Podemos usar variáveis em tipos assim como usarmos no código. Variáveis como `a` e `b` são apenas convensão, mas são arbitrárias e podem ser substituídas com qualquer nome que quiser. Se elas forem a mesma variável, elas devem ser do mesmo tipo. Isto é uma regra importante, portanto vamos deixar claro: `a -> b` podem ser de qualquer tipo `a` para qualquer tipo `b`, mas `a -> a` devem ser do mesmo tipo. Por examplo, `id` pode ser `String -> String` ou `Number -> Number`, mas não `String -> Bool`.
@@ -111,24 +95,20 @@ Aqui mais alguns exemplos para ver se você consegue sozinho decifrá-las.
 
 ```js
 //  head :: [a] -> a
-var head = function(xs){ return xs[0]; }
+const head = xs => xs[0];
 
 //  filter :: (a -> Bool) -> [a] -> [a]
-var filter = curry(function(f, xs){
-  return xs.filter(f);
-});
+const filter = curry((f, xs) => xs.filter(f));
 
 //  reduce :: (b -> a -> b) -> b -> [a] -> b
-var reduce = curry(function(f, x, xs){
-  return xs.reduce(f, x);
-});
+const reduce = curry((f, x, xs) => xs.reduce(f, x));
 ```
 
 `reduce` é quem sabe, a mais expressiva de todas. Isso é um assunto delicado, não se preocupe se não entender bem essa parte, não desanime.
 
 ## Estreitando as possibilidades
 
-Uma vez que type variable foi introduzida, surge uma curiosa propriedade chamada *parametricity*[^http://en.wikipedia.org/wiki/Parametricity]. Essa propriedade afirma que uma função irá *agir em todos os tipos de maneira uniforme*. Vamos investigar.
+Uma vez que type variable foi introduzida, surge uma curiosa propriedade chamada [*parametricity*](http://en.wikipedia.org/wiki/Parametricity). Essa propriedade afirma que uma função irá *agir em todos os tipos de maneira uniforme*. Vamos investigar.
 
 ```js
 // head :: [a] -> a
@@ -162,12 +142,12 @@ Você não precisa de nenhum código para entender os teoremas, eles seguem os t
 
 Você deve estar pensando, bom isso é por causa do senso comum. Mas pelo que sei, computadores não possuem um senso comum. Em vez disso, eles devem possuir uma forma padrão de automatização de código. A matemática tem uma maneira de formalizar o que é intuitivo, o que é útil no meio desse terreno rígido da lógica do computador.
 
-O teorema de `filter` é similar. Ele informa que compõe `f` e `p` para verificar oque deve ser filtrado, então aplica o `f` via `map` (lembre-se que filter, não irá transformar os elementos - sua assinatura obriga que `a` não seja alterado), isso sempre será equivalente a mapear nosso `f` então filtrar os resultado com o predicado `p`.
+O teorema de `filter` é similar. Ele informa que compõe `f` e `p` para verificar o que deve ser filtrado, então aplica o `f` via `map` (lembre-se que filter, não irá transformar os elementos - sua assinatura obriga que `a` não seja alterado), isso sempre será equivalente a mapear nosso `f` então filtrar os resultado com o predicado `p`.
 
 Esse são apenas dois exemplos, mas você pode aplicar esse raciocínio em qualquer assinatura do tipo polimórfico que sempre se aplicará. Em JavaScript, existem algumas ferramentas disponíveis para declarar regras de reescrita. O resultado é menos esforço e possibilidades infinitas.
 
 ## Em Resumo
 
-Types signatures Hindley-Milner são onipresentes no mundo funcional. Embora sejam simples de ler e escrever, leva tempo até dominar a técnica de entender programas apenas pela assinatura. A partir daqui iremos adicionar assinaturas em cada linha de código.
+Assinaturas (Type Signatures) Hindley-Milner são onipresentes no mundo funcional. Embora sejam simples de ler e escrever, leva tempo até dominar a técnica de entender programas apenas pela assinatura. A partir daqui iremos adicionar assinaturas em cada linha de código.
 
 [Capítulo 8: Tupperware](ch8-pt-BR.md)
