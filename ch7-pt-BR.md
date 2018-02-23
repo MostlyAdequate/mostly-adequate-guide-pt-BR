@@ -108,7 +108,7 @@ const reduce = curry((f, x, xs) => xs.reduce(f, x));
 
 ## Estreitando as possibilidades
 
-Uma vez que type variable foi introduzida, surge uma curiosa propriedade chamada *parametricity*[^http://en.wikipedia.org/wiki/Parametricity]. Essa propriedade afirma que uma função irá *agir em todos os tipos de maneira uniforme*. Vamos investigar.
+Uma vez que type variable foi introduzida, surge uma curiosa propriedade chamada [*parametricity*](http://en.wikipedia.org/wiki/Parametricity). Essa propriedade afirma que uma função irá *agir em todos os tipos de maneira uniforme*. Vamos investigar.
 
 ```js
 // head :: [a] -> a
