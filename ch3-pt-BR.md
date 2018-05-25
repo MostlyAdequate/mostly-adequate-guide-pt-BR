@@ -6,7 +6,7 @@ Antes de seguir em frente, temos que entender o que é uma função pura.
 
 >Uma função pura, é aquela dada um mesmo valor de entrada, vai sempre retornar o mesmo valor de saída, sem efeitos colaterais.
 
-Por exemplo `slice` e `splice`, ambas fazem a mesma coisa, cada uma usando uma forma direfente. Nós dizemos que `slice` é pura, isso porque retorna sempre a mesma coisa dada a mesma entrada. Mas `splice` não, ela come um pedaço do array alterando assim o seu valor original, e isso é um efeito colateral.
+Por exemplo `slice` e `splice`, ambas fazem a mesma coisa, cada uma usando uma forma diferente. Nós dizemos que `slice` é pura, isso porque retorna sempre a mesma coisa dada a mesma entrada. Mas `splice` não, ela come um pedaço do array alterando assim o seu valor original, e isso é um efeito colateral.
 
 ```js
 var xs = [1,2,3,4,5];
@@ -90,7 +90,7 @@ E a lista vai crescendo. Qualquer interação com o mundo exterior em uma funç�
 
 Não estamos proibindo seu uso, em vez disso, queremos apenas contê-los e roda-los de uma forma controlada e segura. Iremos aprender como fazer isso quando trabalharmos com *functors* e *nomads* nos próximos capítulos, mas agora, vamos tentar deixar essas funções traiçoeiras bem separadas de nossas funções puras.
 
-Efeitos colaterais desqualifica uma função de ser *pura* e isso faz sentido: funções puras por definição, deve sempre retornar a mesma saída dada um mesma entrada, o que não é possível garantir quando lidamos com fatores externos dentro de nossa função local.
+Efeitos colaterais desqualificam uma função de ser *pura* e isso faz sentido: funções puras por definição, devem sempre retornar a mesma saída dada um mesma entrada, o que não é possível garantir quando lidamos com fatores externos dentro de nossa função local.
 
 Vamos dar uma olhada mais de perto porque insistimos na questão de "mesma entrada e mesma saída". Vamos olhar uma questão de matemática da 8ª série.
 
@@ -148,13 +148,13 @@ var squareNumber  = memoize(function(x){ return x*x; });
 squareNumber(4);
 //=> 16
 
-squareNumber(4); // returna o cache para a entrada 4
+squareNumber(4); // retorna o cache para a entrada 4
 //=> 16
 
 squareNumber(5);
 //=> 25
 
-squareNumber(5); // returna o cache para entrada 5
+squareNumber(5); // retorna o cache para entrada 5
 //=> 25
 ```
 
@@ -226,7 +226,7 @@ De fato, encontramos a comunidade funcional criando novas ferramentas de testes,
 
 ### Razoável
 
-Muitos acreditam que o maior beneficio em trabalhar com funções puras é a *referência transparente*. Um pedaço de código é referenciamente transparente, quando o mesmo pode ser substituído por seu valor avaliado sem alterar o comportamento do programa.
+Muitos acreditam que o maior benefício em trabalhar com funções puras é a *referência transparente*. Um pedaço de código é referenciamente transparente, quando o mesmo pode ser substituído por seu valor avaliado sem alterar o comportamento do programa.
 
 Já que funções puras sempre retornam a mesma saída dada a mesma entrada, temos a certeza que sempre retornam o mesmo resultado e assim preservam a transparência referencial. Vamos ver um exemplo:
 
@@ -297,18 +297,18 @@ var punch = function(player, target) {
 };
 ```
 
-Essa capacidade de raciocinar sobre o código é ótima para refatorar e entender codigos em geral. De fato, nós usamos essa técnica para refatorar nosso `flock` do programa `seagul`. Nós usamos `raciocínio equacional` para aproveitar as propriedades da adição e multiplicação.
+Essa capacidade de raciocinar sobre o código é ótima para refatorar e entender códigos em geral. De fato, nós usamos essa técnica para refatorar nosso `flock` do programa `seagul`. Nós usamos `raciocínio equacional` para aproveitar as propriedades da adição e multiplicação.
 Na verdade, iremos usar essa técnica ao longo do livro.
 
 ### Código paralelo
 
-Finalmente, aqui está o golpe de misericórdia, podemos rodar qualquer função pura em paralelo, já que a mesma não precisa de acesso a memória compartilhada e não pode, por definição, possuir concorrência devido a algum efeito coleteral.
+Finalmente, aqui está o golpe de misericórdia, podemos rodar qualquer função pura em paralelo, já que a mesma não precisa de acesso a memória compartilhada e não pode, por definição, possuir concorrência devido a algum efeito colateral.
 
 Isto é totalmente possível tanto em um ambiente servidor js com threads, bem como no navegador com `web workers`, embora a cultura atual pareça evitá-la devido a complexidade quando se trata de funções impuras.
 
 ## Em Resumo
 
-Nós vimos o que são funções puras, e porque nós, como programadores funcionais, acreditamos que são uma maravilha. Deste ponto em diante, vamos nos esforçar para escrever todas nossas funções de forma `pura`. Vamos precisar de algumas ferramentas para nos ajudar a fazer isso, mas enquanto isso, vamos tentar separar as funções inpuras do resto do do nosso código `puro`.
+Nós vimos o que são funções puras, e porque nós, como programadores funcionais, acreditamos que são uma maravilha. Deste ponto em diante, vamos nos esforçar para escrever todas nossas funções de forma `pura`. Vamos precisar de algumas ferramentas para nos ajudar a fazer isso, mas enquanto isso, vamos tentar separar as funções impuras do resto do nosso código `puro`.
 
 Escrever programas com funções puras é um pouco trabalhoso sem a ajuda de ferramentas adicionais em nosso `cinto de utilidades`. Temos que fazer alguns malabarismos passando argumentos para tudo quanto é lugar, estamos proibidos de usar estados, para não mencionar os efeitos colaterais. Como se faz para escrever esses programas mazoquistas? Vamos adquirir uma nova ferramenta chamada `curry`.
 
