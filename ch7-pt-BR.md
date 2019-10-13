@@ -6,7 +6,7 @@ Se você é novo no mundo da programação funcional, não irá demorar para voc
 
 Ao trabalhar com funções puras, type signatures possuem um poder expressivo muito maior do que qualquer outro idioma. Essas signatures cochicham no seu ouvido os segredos íntimos de uma função. Em uma única e compacta linha, elas expoem qual seu comportamento e intenção. Delas podemos deduzir teoremas. Types podem ser deduzidas, portanto não necessitando anotações explicitas. Elas podem ser ajustadas para uma forma precisa ou geral e abstrata. Elas não são apenas úteis para verificações em tempo de execução, mas faz com que seja a melhor forma de documentação disponível. Type signatures faz um papel importante na programação funcional - muito mais do que você imagina.
 
-JavaScript é uma linguagem dinâmica, mas não significa que evitamos types completamente. Ainda trabalhamos com strings, numbers, booleans e assim por diante. Portanto não há nenhuma integração na linguagem, apenas guarde isso em mente. Não se preocupe, já que estamos usando assinaturas para documentação, podemos usar comentários para o que precisamos.
+JavaScript é uma linguagem dinâmica, mas não significa que evitamos types completamente. Ainda trabalhamos com strings, numbers, booleans e assim por diante. Portanto não há nenhuma integração na linguagem, apenas guarde isso em mente. Não se preocupe, já que estamos usando assinaturas para documentação, podemos usar comentários para o que precisarmos.
 
 Existem verificadores de tipos disponíveis para Javascript como [Flow](http://flowtype.org/) ou dialetos tipados como [TypeScript](http://www.typescriptlang.org/). O objetivo desse livro é equipá-lo com ferramentas para escrever código funcional, portanto iremos ficar com o sistema de tipos padrão usado nas linguagens funcionais.
 
@@ -43,7 +43,7 @@ const match = curry((reg, s) => s.match(reg));
 const replace = curry((reg, sub, s) => s.replace(reg, sub));
 ```
 
-`strLength` é a mesma idéia de antes: recebemos uma `String` e retorna um `Number`.
+`strLength` é a mesma ideia de antes: recebe-se uma `String` e retorna um `Number`.
 
 Os outros podem te deixar perplexo no primeiro momento. Sem compreender totalmente os detalhes, você pode apenas ver o último tipo como sendo o valor de retorno. Então para `match` você pode interpretar como: Isso recebe um `Regex` e uma `String` e returna uma `[String]`. Mas uma coisa interessante está acontecendo aqui, e gostaria de um tempo para lhe explicar.
 
@@ -87,11 +87,11 @@ A função `id` recebe qualquer coisa do tipo `a` e retorna alguma coisa do mesm
 
 `map` similarmente também usa type variables, mas desta vez colocamos o `b` que pode ser ou não do mesmo tipo que `a`. Podemos ler isso como: `map` recebe uma função de qualquer tipo `a`, para o mesmo tipo ou não `b`, então recebe um array de `a`'s que resulta e um array de `b`'s.
 
-Felizmente, você foi surpreendido pela beleza expressiva de type signature. Isso literamente nos conta o que a função faz quase que palavra por palavra. Dada uma função de `a` para `b`, um array de `a`, e isso nos retorna um array de `b`. A única coisa que ela deve fazer é chamar a função para cada `a`. Qualquer outra coisa fora disso é incompatível.
+Felizmente, fostes surpreendido pela beleza expressiva da type signature. Isso literamente nos conta o que a função faz quase que palavra por palavra. Dada uma função de `a` para `b`, um array de `a`, e isso nos retorna um array de `b`. A única coisa que ela deve fazer é chamar a função para cada `a`. Qualquer outra coisa fora disso é incompatível.
 
-Ser capaz de raciocinar sobre types a suas implicações, é uma habilidade que o fará ir mais longe no mundo funcional. Não só os papéis, blogs, documentos e etc se tornam mais digerível, mas a assinatura em sí praticamente lhe dará toda funcionalidade implementada. É preciso prática para se tornar um leitor fluente de assinaturas, mas se persistir nisso, um mundo de informação estará disponível para você.
+Ser capaz de raciocinar sobre types a suas implicações, é uma habilidade que o fará ir mais longe no mundo funcional. Não só os papéis, blogs, documentos e outros mais se tornam mais digeríveis, mas a assinatura em sí praticamente lhe dará toda funcionalidade implementada. É preciso prática para se tornar um leitor fluente de assinaturas, mas se persistir nisso, um mundo de informação estará disponível para você.
 
-Aqui mais alguns exemplos para ver se você consegue sozinho decifrá-las.
+Aqui mais alguns exemplos para ver se você consegue sozinho decifrá-los.
 
 ```js
 //  head :: [a] -> a
