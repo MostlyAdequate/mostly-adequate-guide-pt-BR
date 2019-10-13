@@ -2,15 +2,15 @@
 
 ## Introdução
 
-Olá eu sou o Professor Franklin Risby, prazer em conhecê-lo! Iremos passar um tempo juntos para que eu lhe ensine um pouco sobre programação funcional. Eu já falei sobre mim, me conte sobre você! Espero que você já esteja familiarizado com JavaScript, tenha um pouco de experiência com Orientação a Objetos and fancy yourself a working class programmer. Você não precisa ter um PHD em Entomologia, você apenas precisa saber como encontrar e matar alguns ``Bugs``.
+Olá, eu sou o Professor Franklin Risby, prazer em conhecê-lo! Iremos passar um tempo juntos para que eu lhe ensine um pouco sobre programação funcional. Eu já falei sobre mim, me conte sobre você! Espero que você já esteja familiarizado com JavaScript, tenha um pouco de experiência com Orientação a Objetos e se auto-declare um programador que vive de tal. Você não precisa ter um PHD em Entomologia, você apenas precisa saber como encontrar e matar alguns ``Bugs``.
 
-Não suponho que você tenha algum conhecimento anterior com programação funcional, mas suponho que tenha conhecimento de passar por situações desfavoráveis que aparecem quando trabalhamos com estados mutáveis, efeitos colaterais irrestritos e unprincipled design. Agora que estamos apresentados, vamos começar.
+Não suponho que você tenha algum conhecimento anterior com programação funcional, mas suponho que tenha o conhecimento de passar por situações desfavoráveis que aparecem quando trabalhamos com estados mutáveis, efeitos colaterais irrestritos e design sem princípios. Agora que estamos apresentados, vamos começar.
 
 
-O propósito deste capítulo é lhe mostrar aquilo que procuramos quando escrevemos programas funcionais. Devemos ter a idéia sobre o que faz um programa ser **funcional**, ou iremos apenas escrever código a toa sem rumo algum, inclusive evitando a todo custo objetos - Um esforço inútil.
+O propósito deste capítulo é lhe mostrar aquilo que procuramos quando escrevemos programas funcionais. Devemos ter a ideia sobre o que faz um programa ser **funcional**, ou iremos apenas escrever código a toa sem rumo algum, inclusive evitando a todo custo objetos - Um esforço inútil.
 Precisamos de uma bússula, um norte para quando sentirmos que estamos perdidos.
 
-Existem alguns principios de programação, vários credos que nos guia através dos vales sombrios de qualquer aplicação: DRY (don't repeat yourself / não se repita), loose coupling high cohesion (acoplamento e coesão), YAGNI (ya ain't gonna need it / você não vai precisar disso), principle of least surprise (princípio da menor surpresa), single responsibility (única responsabilidade), e assim por diante.
+Existem alguns principios de programação, vários credos que nos guia através dos vales sombrios de qualquer aplicação: DRY (don't repeat yourself / não se repita), loose coupling high cohesion (acoplamento e coesão), YAGNI (ya ain't gonna need it / cê vai precisar disso não), principle of least surprise (princípio da menor surpresa), single responsibility (responsabilidade única), e assim por diante.
 
 Não irei abusar usando cada princípio que tenho visto em todos esses anos... o caso
 é que eles se aplicam no ambiente funcional, mesmo sendo de uma forma superficial para aquilo que queremos.
@@ -20,7 +20,7 @@ O que quero agora, antes de seguimos, é deixar claro que nosso objetivo aqui é
 
 ## Um encontro casual
 
-Vamos começar com um toque de insanidade. Aqui temos uma aplicação de seagull(gaivota). Quando outros rebanhos se juntam ao grupo, eles tornam-se maiores, e quando se reproduzem, se multiplicam pelo número de gaivotas. Não temos a intenção de ter um bom código orientado a objeto, lembre-se, o código serve para destacar os perigos de nossas abordagens modernas, baseada em atribuição. Observe:
+Vamos começar com um toque de insanidade. Aqui temos uma aplicação de seagull(gaivota). Quando outros rebanhos se juntam ao grupo, eles tornam-se maiores, e quando se reproduzem, se multiplicam pelo número de gaivotas. Não temos a intenção de ter um bom código orientado a objeto, lembre-se que o código serve para destacar os perigos de nossas abordagens modernas, baseada em atribuição. Observe:
 
 ```js
 var Flock = function(n) {
