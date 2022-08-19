@@ -21,7 +21,7 @@ Dito isto, programar em linguagem funcional será sem dúvida a melhor forma de 
 
 ## Leia Online
 
-Para uma melhor experiência, leia online atráves do Gitbook.
+Para uma melhor experiência, [leia online atráves do Gitbook] (https://mostly-adequate.gitbooks.io/mostly-adequate-guide/).
 
 * Barra lateral de acesso rápido
 * Exercícios no navegador
