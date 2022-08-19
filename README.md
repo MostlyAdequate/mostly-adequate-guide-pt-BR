@@ -19,13 +19,30 @@ Este livro é sobre o paradigma funcional. E para aprender, usaremos a linguagem
 
 Dito isto, programar em linguagem funcional será sem dúvida a melhor forma de aprender os conceitos propostos neste livro. JavaScript será o meio de aprendermos este paradigma, onde você mesmo é quem irá aplicá-lo. Felizmente, todas as interfaces são matemáticas e portanto universais. Você se sentirá familiarizado com linguagens como Swift, Scala, Haskell, Purescript e outros ambientes matematicamente inclinados.
 
-### Gitbook (para uma melhor experiência)
+## Leia Online
 
-* [Leia online](http://drboolean.gitbooks.io/mostly-adequate-guide/)
-* [Download EPUB](https://www.gitbook.com/download/epub/book/drboolean/mostly-adequate-guide)
-* [Download Mobi (Kindle)](https://www.gitbook.com/download/mobi/book/drboolean/mostly-adequate-guide)
+Para uma melhor experiência, [leia online atráves do Gitbook](https://mostly-adequate.gitbooks.io/mostly-adequate-guide/).
 
-### Faça você mesmo
+* Barra lateral de acesso rápido
+* Exercícios no navegador
+* Exemplos aprofundados
+
+## Brinque com o codígo
+
+Para fazer o treino eficiênte e não ficar entediado enquanto te conto outra historia, certifique-se de brincar com o código com os conceitos introduzidos nesse livro. Alguns podem ser difíceis de pegar no início e são melhores compreendidos sujando as mãos. Todas as funções e estruturas de dados algébricas apresentadas nesse livro estão reunidos no apêndice (material complementar). O código também está disponivel como um modulo npm:
+
+```
+$ npm i @mostly-adequate/support
+```
+
+Alternativamente, os exercícios de cada capítulo podem ser executados e completados no seu editor! Por exemplo, complete o ```exercise_*.js``` em ```exercises/ch04``` e rode:
+
+```
+$ npm run ch04
+```
+
+## Faça você mesmo
+>⚠️ Essa configuração de projeto é um pouco antiga, logo, você talvez passe por varios erros caso tente fazer build localmente. Nós recomendamos o uso do node v10.22.1 e a última versão do Calibre se possivel.
 
 ```
 git clone https://github.com/MostlyAdequate/mostly-adequate-guide-pt-BR
