@@ -19,11 +19,17 @@ Este livro é sobre o paradigma funcional. E para aprender, usaremos a linguagem
 
 Dito isto, programar em linguagem funcional será sem dúvida a melhor forma de aprender os conceitos propostos neste livro. JavaScript será o meio de aprendermos este paradigma, onde você mesmo é quem irá aplicá-lo. Felizmente, todas as interfaces são matemáticas e portanto universais. Você se sentirá familiarizado com linguagens como Swift, Scala, Haskell, Purescript e outros ambientes matematicamente inclinados.
 
-### Gitbook (para uma melhor experiência)
+### Leia Online
 
-* [Leia online](http://drboolean.gitbooks.io/mostly-adequate-guide/)
-* [Download EPUB](https://www.gitbook.com/download/epub/book/drboolean/mostly-adequate-guide)
-* [Download Mobi (Kindle)](https://www.gitbook.com/download/mobi/book/drboolean/mostly-adequate-guide)
+Para uma melhor experiência, leia online atráves do Gitbook.
+
+* Barra lateral de acesso rápido
+* Exercícios no navegador
+* Exemplos aprofundados
+
+### Brinque com o codígo
+
+Para fazer o treino eficiênte e não ficar entediado enquanto te conto outra historia, certifique-se de brincar com o código com os conceitos introduzidos nesse livro. Alguns podem ser difíceis de pegar no início e são melhores compreendidos sujando as mãos.
 
 ### Faça você mesmo
 
