@@ -58,6 +58,24 @@ Container.prototype.ap = function (otherContainer) {
 };
 ```
 
-Lembre-se, `this.$value` será uma função e estará aceitando outros functors, então, só iremos precisar `map` mapear isso. E com isso, Nós temos a definição da nossa interface:
+Lembre-se, `this.$value` será uma função e estará aceitando outros functors, então, só iremos precisar usar o `map`. E com isso, Nós temos a definição da nossa interface:
 
- 
+> Um aplicativo functor é um functor apontado com um método `ap`
+
+Note a dependência em **apontado**. A interface apontada é crucial aqui, como veremos nos exemplos a seguir.
+
+Agora, eu sinto o seu ceticismo (ou talvez confusão e horror), mas mantenha a mente aberta; Esse caractere `ap` será útil. Antes de entrarmos nesses assunto, vamos explorar uma propriedade legal.
+
+```js
+F.of(x).map(f) === F.of(f).ap(F.of(x));
+```
+
+No inglês adequado, mapear o `f` é equivalente a m`ap`ear um functor de `f`. Ou no inglês mais adequado ainda, nós podemos trocar o 'x' em nosso container e `map(f)` ou nós podemos levantar ambos `f` e `x` em nosso container e utilizar `ap` neles. Isso nós permite-nos escrever da esquerda para a direita:
+
+```js
+Maybe.of(add).ap(Maybe.of(2)).ap(Maybe.of(3));
+// Maybe(5)
+
+Task.of(add).ap(Task.of(2)).ap(Task.of(3));
+// Task(5)
+```
